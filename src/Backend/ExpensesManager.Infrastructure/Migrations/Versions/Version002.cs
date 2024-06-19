@@ -16,7 +16,8 @@ namespace ExpensesManager.Infrastructure.Migrations.Versions
                 .WithColumn("CategoryId").AsInt64().NotNullable().ForeignKey("FK_Transaction_Category_Id", "Category", "Id")
                 .WithColumn("Amount").AsDecimal().NotNullable()
                 .WithColumn("Description").AsString().NotNullable()
-                .WithColumn("Type").AsInt32().NotNullable();
+                .WithColumn("Type").AsInt32().NotNullable()
+                .WithColumn("TransactionDate").AsDateTime().NotNullable();
         }
     }
 }

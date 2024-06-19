@@ -11,5 +11,7 @@ namespace ExpensesManager.Domain.Entities
         public string Description { get; set; }
 
         public TransactionType Type { get; set; }
+
+        public DateTime TransactionDate { get; set; }
     }
 }
