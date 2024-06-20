@@ -1,4 +1,5 @@
-﻿using ExpensesManager.Domain.Repositories.CategoryRepository;
+﻿using ExpensesManager.Domain.Entities;
+using ExpensesManager.Domain.Repositories.CategoryRepository;
 
 namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 {
@@ -9,6 +10,11 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         public CategoryRepository(ExpensesManagerContext context)
         {
             _context = context;
+        }
+
+        public async Task Add(Category category)
+        {
+            await _context.Category.AddAsync(category);
         }
     }
 }

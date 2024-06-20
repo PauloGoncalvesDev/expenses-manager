@@ -1,12 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ExpensesManager.Domain.Enum
 {
     public enum CategoryType
     {
-        [Description("Depesa")]
+        [Display(Name = "Depesa")]
         Expenses = 0,
-        [Description("Receita")]
+        [Display(Name = "Receita")]
         Income = 1
     }
 }

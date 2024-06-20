@@ -1,4 +1,5 @@
 using ExpensesManager.Domain.Extension;
+using ExpensesManager.Application;
 using ExpensesManager.Infrastructure;
 using ExpensesManager.Infrastructure.Migrations;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
 
 var app = builder.Build();
 
