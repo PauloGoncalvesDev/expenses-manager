@@ -6,7 +6,7 @@ namespace ExpensesManager.Web.Models
     {
         public enum CategoryType
         {
-            [Display(Name = "Depesa")]
+            [Display(Name = "Despesa")]
             Expenses = 0,
             [Display(Name = "Receita")]
             Income = 1
