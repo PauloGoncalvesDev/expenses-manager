@@ -27,6 +27,21 @@
     --hover-link-color: #B0D4FF;
 }
 
+.fade-out-up {
+    animation: fadeOutUp 500ms forwards;
+}
+
+@keyframes fadeOutUp {
+    from {
+        transform: translate(-50%, -50%) translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(-50%, -60%) translateY(-20px);
+        opacity: 0;
+    }
+}
 
 html {
     position: relative;
@@ -97,4 +112,17 @@ a {
 
 .button-font-size {
     font-size: 1.1rem !important;
+}
+
+#error-message {
+    width: 70%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    color: var(--texto-principal);
+    background-color: var(--alerta-erro-fundo);
+    padding: 0.5rem;
+    border-radius: 5px;
 }

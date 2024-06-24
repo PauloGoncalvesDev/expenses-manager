@@ -14,17 +14,16 @@ function submitFirstForm() {
         if (response.ok)
             return response.json();
 
-        throw new Error('Erro no envio do primeiro formulário.');
+        showError('Erro no envio do formulário.');
 
     }).then(data => {
         if (data.success)
             showSecondForm();
         else 
-            alert('Erro ao processar o primeiro formulário.');
+            showError(data.error);
 
     }).catch(error => {
-        console.log(error);
-        alert('Erro ao processar o segundo formulário.');
+        showError(error);
     });
 }
 

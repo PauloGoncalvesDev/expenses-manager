@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="~/css/manager.css" asp-append-version="true" />
 </head>
 
+<span id="error-message" style="display:none;"></span>
+
 <div class="min-vh-100 text-center d-xl-flex justify-content-center align-items-start pt-5">
     <div class="w-100 h-100">
         @await Html.PartialAsync("_PartialManagerForms")

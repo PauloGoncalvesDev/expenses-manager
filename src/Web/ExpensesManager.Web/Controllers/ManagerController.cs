@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.Category;
 using ExpensesManager.Domain.Entities;
+using ExpensesManager.Exceptions.Exceptions;
 using ExpensesManager.Web.Models;
 using ExpensesManager.Web.Utilities.Mapper;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,16 @@ namespace ExpensesManager.Web.Controllers
 
                 return new JsonResult(new { success = true, category });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return new JsonResult(new { success = false });
+                if (ex is ValidationException)
+                {
+                    ValidationException validationsError = ex as ValidationException;
+
+                    return new JsonResult(new { success = false, error = validationsError.ErrorMessage });
+                }
+
+                return new JsonResult(new { success = false, error = ex.Message });
             }
         }
     }
