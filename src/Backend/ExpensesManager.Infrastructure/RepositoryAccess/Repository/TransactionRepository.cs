@@ -1,4 +1,5 @@
-﻿using ExpensesManager.Domain.Repositories.TransactionRepository;
+﻿using ExpensesManager.Domain.Entities;
+using ExpensesManager.Domain.Repositories.TransactionRepository;
 
 namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 {
@@ -9,6 +10,11 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         public TransactionRepository(ExpensesManagerContext context)
         {
             _context = context;
+        }
+
+        public async Task Add(Transaction transaction)
+        {
+            await _context.Transaction.AddAsync(transaction);
         }
     }
 }
