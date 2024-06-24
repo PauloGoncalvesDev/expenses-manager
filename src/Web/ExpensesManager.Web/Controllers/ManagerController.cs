@@ -21,11 +21,11 @@ namespace ExpensesManager.Web.Controllers
 
                 await createCategory.Execute(category);
 
-                return RedirectToAction("Index");
+                return new JsonResult(new { success = true, category });
             }
             catch(Exception ex)
             {
-                return RedirectToAction("Index");
+                return new JsonResult(new { success = false });
             }
         }
     }

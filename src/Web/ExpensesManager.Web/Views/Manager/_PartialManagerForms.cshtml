@@ -1,0 +1,26 @@
+﻿@using ExpensesManager.Web.Models;
+@using static ExpensesManager.Web.Models.EnumModel;
+@model CategoryModel;
+
+<form asp-controller="Manager" asp-action="AddCategory" method="post" class="firstForm">
+    <fieldset>
+        <h1 class="text-start mb-4">Qual a movimentação?</h1>
+        <div class="mb-4">
+            <input asp-for="Title" type="text" class="form-control input-font-size" id="categoryTitleInput" placeholder="Movimentação" required>
+        </div>
+        <div class="mb-4">
+            <select asp-for="Type" asp-items="Html.GetEnumSelectList<CategoryType>()" class="form-select input-font-size" required></select>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <button type="submit" asp-controller="Manager" asp-action="AddCategory" class="w-25 button-font-size btn button-primary">Prosseguir <i class="bi bi-arrow-right-circle ms-1"></i></button>
+        </div>
+    </fieldset>
+</form>
+
+<form asp-controller="" asp-action="" method="" class="secondForm" style="display: none">
+    <fieldset>
+        <h1 class="text-start mb-4">Conte-nos mais</h1>
+    </fieldset>
+</form>
+
+<script src="~/js/manager.js" asp-append-version="true"></script>
