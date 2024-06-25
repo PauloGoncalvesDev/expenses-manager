@@ -6,7 +6,7 @@
     <fieldset>
         <h1 class="text-start mb-4">Qual a movimentação?</h1>
         <div class="mb-4">
-            <input asp-for="Title" type="text" class="form-control input-font-size" id="categoryTitleInput" placeholder="Movimentação" required>
+            <input asp-for="Title" type="text" class="form-control input-font-size" id="categoryTitleInput" placeholder="Título da Movimentação" required>
         </div>
         <div class="mb-4">
             <select asp-for="Type" asp-items="Html.GetEnumSelectList<CategoryType>()" class="form-select input-font-size" required></select>
