@@ -18,7 +18,8 @@ namespace ExpensesManager.Application
 
         private static void AddApplicationCategory(IServiceCollection serviceDescriptors)
         {
-            serviceDescriptors.AddScoped<ICreateCategory, CreateCategory>();
+            serviceDescriptors.AddScoped<ICreateCategory, CreateCategory>()
+                              .AddScoped<IGetCategory, GetCategory>();
         }
 
         private static void AddApplicationTransaction(IServiceCollection serviceDescriptors)

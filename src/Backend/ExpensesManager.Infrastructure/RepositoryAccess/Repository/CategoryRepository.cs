@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Domain.Entities;
 using ExpensesManager.Domain.Repositories.CategoryRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 {
@@ -15,6 +16,15 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         public async Task Add(Category category)
         {
             await _context.Category.AddAsync(category);
+        }
+
+        public async Task<List<Category>> GetLastCategories()
+        {
+            return await _context.Category.AsNoTracking()
+                .Where(category => category.DeletionDate == null)
+                .OrderByDescending(order => order.CreationDate)
+                .Take(10)
+                .ToListAsync();
         }
     }
 }
