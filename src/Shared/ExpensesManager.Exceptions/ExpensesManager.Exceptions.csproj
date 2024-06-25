@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="ResourcesMessage\RESPONSEMSG.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RESPONSEMSG.resx</DependentUpon>
+    </Compile>
     <Compile Update="ResourcesMessage\VALIDATIONMSG.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -15,6 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ResourcesMessage\RESPONSEMSG.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RESPONSEMSG.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="ResourcesMessage\VALIDATIONMSG.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>VALIDATIONMSG.Designer.cs</LastGenOutput>

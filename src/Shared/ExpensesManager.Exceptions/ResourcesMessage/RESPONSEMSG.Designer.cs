@@ -22,14 +22,14 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class VALIDATIONMSG {
+    public class RESPONSEMSG {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal VALIDATIONMSG() {
+        internal RESPONSEMSG() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExpensesManager.Exceptions.ResourcesMessage.VALIDATIONMSG", typeof(VALIDATIONMSG).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExpensesManager.Exceptions.ResourcesMessage.RESPONSEMSG", typeof(RESPONSEMSG).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,11 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deve ser informado o valor da movimentação.
+        ///   Looks up a localized string similar to Despesa registrada com sucesso.
         /// </summary>
-        public static string AMOUNT_ZERO {
+        public static string TRANSACTION_SUCCESS {
             get {
-                return ResourceManager.GetString("AMOUNT_ZERO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Não pode ser informada uma data futura.
-        /// </summary>
-        public static string DATE_FUTURE {
-            get {
-                return ResourceManager.GetString("DATE_FUTURE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Descrição da movimentação não pode estar vazia.
-        /// </summary>
-        public static string DESCRIPTION_EMPTY {
-            get {
-                return ResourceManager.GetString("DESCRIPTION_EMPTY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Descrição da movimentação não pode conter apenas números.
-        /// </summary>
-        public static string DESCRIPTION_NUMBER {
-            get {
-                return ResourceManager.GetString("DESCRIPTION_NUMBER", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Título da movimentação não pode estar vazio.
-        /// </summary>
-        public static string TITLE_EMPTY {
-            get {
-                return ResourceManager.GetString("TITLE_EMPTY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Título da movimentação não pode conter apenas números.
-        /// </summary>
-        public static string TITLE_NUMBER {
-            get {
-                return ResourceManager.GetString("TITLE_NUMBER", resourceCulture);
+                return ResourceManager.GetString("TRANSACTION_SUCCESS", resourceCulture);
             }
         }
     }

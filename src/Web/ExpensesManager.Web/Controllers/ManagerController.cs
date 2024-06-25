@@ -1,6 +1,8 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.Category;
+using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
 using ExpensesManager.Domain.Entities;
 using ExpensesManager.Exceptions.Exceptions;
+using ExpensesManager.Exceptions.ResourcesMessage;
 using ExpensesManager.Web.Models;
 using ExpensesManager.Web.Utilities.Mapper;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,29 @@ namespace ExpensesManager.Web.Controllers
                 await createCategory.Execute(category);
 
                 return new JsonResult(new { success = true, category });
+            }
+            catch (Exception ex)
+            {
+                if (ex is ValidationException)
+                {
+                    ValidationException validationsError = ex as ValidationException;
+
+                    return new JsonResult(new { success = false, error = validationsError.ErrorMessage });
+                }
+
+                return new JsonResult(new { success = false, error = ex.Message });
+            }
+        }
+
+        public async Task<ActionResult> AddTransaction([FromForm] TransactionModel transactionModel, [FromServices] ICreateTransaction createTransaction)
+        {
+            try
+            {
+                Transaction transaction = new TransactionMapper().Map(transactionModel);
+
+                await createTransaction.Execute(transaction);
+
+                return new JsonResult(new { success = true, message = RESPONSEMSG.TRANSACTION_SUCCESS });
             }
             catch (Exception ex)
             {

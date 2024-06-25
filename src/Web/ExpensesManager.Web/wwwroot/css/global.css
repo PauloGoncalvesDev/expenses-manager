@@ -126,3 +126,16 @@ a {
     padding: 0.5rem;
     border-radius: 5px;
 }
+
+#success-message {
+    width: 70%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    color: var(--texto-principal);
+    background-color: var(--alerta-sucesso-fundo);
+    padding: 0.5rem;
+    border-radius: 5px;
+}

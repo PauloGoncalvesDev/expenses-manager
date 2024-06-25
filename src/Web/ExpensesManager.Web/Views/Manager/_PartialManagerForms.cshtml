@@ -17,10 +17,6 @@
     </fieldset>
 </form>
 
-<form asp-controller="" asp-action="" method="" class="secondForm" style="display: none">
-    <fieldset>
-        <h1 class="text-start mb-4">Conte-nos mais</h1>
-    </fieldset>
-</form>
+@await Html.PartialAsync("_PartialManagerTransactionForm")
 
 <script src="~/js/manager.js" asp-append-version="true"></script>

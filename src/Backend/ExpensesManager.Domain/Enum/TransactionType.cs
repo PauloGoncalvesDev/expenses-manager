@@ -1,32 +1,33 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExpensesManager.Domain.Enum
 {
     public enum TransactionType
     {
-        [Description("Outros")]
+        [Display(Name = "Outros")]
         Other = 0,
-        [Description("Alimentação")]
+        [Display(Name = "Alimentação")]
         Food = 1,
-        [Description("Transporte")]
+        [Display(Name = "Transporte")]
         Transportation = 2,
-        [Description("Moradia")]
+        [Display(Name = "Moradia")]
         Housing = 3,
-        [Description("Lazer")]
+        [Display(Name = "Lazer")]
         Recreation = 4,
-        [Description("Saúde")]
+        [Display(Name = "Saúde")]
         Health = 5,
-        [Description("Educação")]
+        [Display(Name = "Educação")]
         Education = 6,
-        [Description("Vestimenta")]
+        [Display(Name = "Vestimenta")]
         Clothing = 7,
-        [Description("Salário")]
+        [Display(Name = "Salário")]
         Salary = 8,
-        [Description("Investimento")]
+        [Display(Name = "Investimento")]
         Investment = 9,
-        [Description("Presente")]
+        [Display(Name = "Presente")]
         Gift = 10,
-        [Description("Venda")]
+        [Display(Name = "Venda")]
         Sale = 11
     }
 }
