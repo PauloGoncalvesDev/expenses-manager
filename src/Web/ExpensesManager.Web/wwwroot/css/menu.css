@@ -1,0 +1,24 @@
+﻿.navbar {
+    padding-left: 40px;
+    padding-right: 40px;
+    background: var(--fundo-secundario) !important;
+    box-shadow: var(--texto-principal) 0px 1px !important;
+}
+
+.nav-item a {
+    color: white !important;
+    font-size: 1.1rem;
+}
+
+.navbar-flex {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container-fluid button {
+    background: var(--texto-principal) !important;
+}
+
+.container-fluid a {
+    color: var(--texto-principal) !important;
+}

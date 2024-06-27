@@ -61,7 +61,7 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Despesa registrada com sucesso.
+        ///   Looks up a localized string similar to Movimentação registrada com sucesso.
         /// </summary>
         public static string TRANSACTION_SUCCESS {
             get {
