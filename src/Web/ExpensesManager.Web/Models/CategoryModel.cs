@@ -7,5 +7,7 @@ namespace ExpensesManager.Web.Models
         public string Title { get; set; }
 
         public CategoryType Type { get; set; }
+
+        public DateTime? CreationDate { get; set; }
     }
 }

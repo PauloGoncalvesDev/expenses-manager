@@ -28,7 +28,7 @@ function submitFirstForm() {
             showError(data.error);
 
     }).catch(error => {
-        showError(error);
+        showError('Erro no envio do formulário.');
     });
 }
 
@@ -54,7 +54,25 @@ function submitSecondForm() {
             showError(data.error);
 
     }).catch(error => {
-        showError(error);
+        showError('Erro no envio do formulário.');
+    });
+}
+
+function loadCategoriesList() {
+    fetch('/Manager/LoadCategoriesList', {
+        method: 'GET',
+
+    }).then(response => {
+        if (response.ok)
+            return response.text();
+
+        showError('Erro ao carregar movimentações');
+
+    }).then(html => {
+        document.getElementById('categoriesListContainer').innerHTML = html; 
+
+    }).catch(error => {
+        showError('Erro ao carregar movimentações');
     });
 }
 
@@ -72,3 +90,5 @@ function showSecondForm(category) {
         secondForm.style.display = "block";
     }, { once: true });
 }
+
+loadCategoriesList();

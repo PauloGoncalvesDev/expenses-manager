@@ -9,11 +9,11 @@
 <span id="error-message" style="display:none;"></span>
 <span id="success-message" style="display:none;"></span>
 
-<div class="min-vh-100 text-center d-xl-flex justify-content-center align-items-start pt-5">
-    <div class="w-100 h-100">
+<div class="min-vh-100 text-center d-xl-flex justify-content-center align-items-start pt-2">
+    <div class="w-100 h-100 px-2">
         @await Html.PartialAsync("_PartialManagerForms")
     </div>
-    <div class="w-100 h-100 mt-5 mt-xl-0 pt-5 pt-xl-0">
+    <div id="categoriesListContainer" class="w-100 h-100 mt-5 mt-xl-0 pt-5 pt-xl-0 px-0 px-xl-5">
         @await Html.PartialAsync("_PartialCategoryList")
     </div>
 </div>

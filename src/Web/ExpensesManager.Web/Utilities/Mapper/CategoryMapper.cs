@@ -5,7 +5,7 @@ using ExpensesManager.Web.Utilities.Interfaces;
 
 namespace ExpensesManager.Web.Utilities.Mapper
 {
-    public class CategoryMapper : IMapper<CategoryModel, Category>
+    public class CategoryMapper : IMapper<CategoryModel, Category>, IMapperModel<CategoryModel, Category>
     {
         public Category Map(CategoryModel model)
         {
@@ -15,6 +15,16 @@ namespace ExpensesManager.Web.Utilities.Mapper
                 Type = (CategoryType)model.Type,
                 CreationDate = DateTime.Now,
                 UpdateDate = DateTime.Now
+            };
+        }
+
+        public CategoryModel Map(Category category)
+        {
+            return new CategoryModel
+            {
+                Title = category.Title,
+                Type = (EnumModel.CategoryType)category.Type,
+                CreationDate = category.CreationDate
             };
         }
     }

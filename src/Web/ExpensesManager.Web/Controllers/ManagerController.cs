@@ -61,5 +61,24 @@ namespace ExpensesManager.Web.Controllers
                 return new JsonResult(new { success = false, error = ex.Message });
             }
         }
+
+        public async Task<ActionResult> LoadCategoriesList([FromServices] IGetCategory getCategory)
+        {
+            try
+            {
+                List<Category> categoryList = await getCategory.Execute();
+
+                List<CategoryModel> categoryModelList = new List<CategoryModel>();
+
+                foreach (Category category in categoryList)
+                    categoryModelList.Add(new CategoryMapper().Map(category));
+
+                return PartialView("_PartialCategoryList", categoryModelList);
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { success = false, error = ex.Message });
+            }
+        }
     }
 }

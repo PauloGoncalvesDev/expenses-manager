@@ -2,25 +2,19 @@
     /* Fundo */
     --fundo-principal: #1E1E2E;
     --fundo-secundario: #2E2E3E;
-
     /* Texto */
     --texto-principal: #FFFFFF;
     --texto-secundario: #B0B0C0;
-
     /* Bordas e Linhas de Separação */
     --bordas-linhas: #3E3E5E;
-
     /* Botões */
     --botao-primario-fundo: #4E94EC;
     --botao-secundario-fundo: #5E5E7E;
-
     /* Alertas */
     --alerta-sucesso-fundo: #28A745;
     --alerta-erro-fundo: #DC3545;
-
     /* Links */
     --link-color: #4E94EC;
-
     /* Hover */
     --hover-botao-primario: #6EB3FF;
     --hover-botao-secundario: #7E7E9E;
@@ -55,6 +49,10 @@ body {
 
 .secondary-background {
     background-color: var(--fundo-secundario);
+}
+
+.primary-text {
+    color: var(--texto-principal);
 }
 
 .secondary-text {
@@ -106,12 +104,22 @@ a {
     cursor: pointer;
 }
 
-.input-font-size{
+.input-font-size {
     font-size: 1.2rem !important;
 }
 
 .button-font-size {
     font-size: 1.1rem !important;
+}
+
+.button-form-size {
+    width: 25%;
+}
+
+@media(max-width: 650px) {
+    .button-form-size {
+        width: 50%;
+    }
 }
 
 #error-message {
@@ -138,4 +146,36 @@ a {
     background-color: var(--alerta-sucesso-fundo);
     padding: 0.5rem;
     border-radius: 5px;
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 2px solid var(--bordas-linhas);
+}
+
+.table th {
+    background-color: var(--fundo-principal);
+}
+
+.table tr:nth-child(even) {
+    background-color: var(--fundo-principal);
+}
+
+.table tr:hover {
+    background-color: var(--hover-botao-secundario);
+}
+
+.type-Income::after,
+.type-Expenses::after {
+    content: "";
+    display: block;
+    height: 2px;
+}
+
+.type-Income::after {
+    background-color: var(--alerta-sucesso-fundo);
+}
+
+.type-Expenses::after {
+    background-color: var(--alerta-erro-fundo);
 }

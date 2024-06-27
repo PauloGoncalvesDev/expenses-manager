@@ -1,1 +1,39 @@
-﻿<h1>Lista de Gastos</h1>
+﻿@using ExpensesManager.Web.Models;
+@using ExpensesManager.Web.Utilities.Extension;
+@using static ExpensesManager.Web.Models.EnumModel;
+@model List<CategoryModel>
+
+<h1>Lista de Movimentações</h1>
+
+@{
+    if (Model == null)
+    {
+        <tr>
+            <td colspan="4">
+                <p>Por enquanto ainda não há gastos registrados.</p>
+            </td>
+        </tr>
+    }
+    else
+    {
+        <table class="table primary-text">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CategoryModel category in Model)
+                {
+                    <tr>
+                        <td>@category.Title</td>
+                        <td class="type-@category.Type">@category.Type.GetDisplayName()</td>
+                        <td>@category.CreationDate?.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
