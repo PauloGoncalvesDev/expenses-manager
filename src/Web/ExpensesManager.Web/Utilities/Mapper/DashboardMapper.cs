@@ -1,6 +1,5 @@
 ﻿using ExpensesManager.Domain.Entities;
 using ExpensesManager.Web.Models;
-using ExpensesManager.Web.Utilities.Interfaces;
 
 namespace ExpensesManager.Web.Utilities.Mapper
 {
@@ -19,15 +18,28 @@ namespace ExpensesManager.Web.Utilities.Mapper
 
             decimal incomesAmount = incomeTransactionModel.Sum(s => s.Amount);
             decimal expensesAmount = expenseTransactionModel.Sum(s => s.Amount);
+            decimal totalAmount = incomesAmount - expensesAmount;
 
             return new DashboardModel
             {
                 Incomes = incomeTransactionModel,
-                IncomesAmount = incomesAmount,
+                IncomesAmount = FormatAmount(incomesAmount),
                 Expenses = expenseTransactionModel,
-                ExpensesAmount = expensesAmount,
-                TotalAmount = incomesAmount - expensesAmount
+                ExpensesAmount = FormatAmount(expensesAmount),
+                TotalAmount = FormatAmount(totalAmount)
             };
+        }
+
+        private string FormatAmount(decimal amount)
+        {
+            string formattedAmount;
+
+            if (Math.Abs(amount) >= 1000000)
+                formattedAmount = (amount / 1000000).ToString("N2", new System.Globalization.CultureInfo("pt-BR")) + "M";
+            else
+                formattedAmount = amount.ToString("N2", new System.Globalization.CultureInfo("pt-BR"));
+
+            return formattedAmount;
         }
     }
 }

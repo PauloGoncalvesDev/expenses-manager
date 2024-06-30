@@ -6,10 +6,10 @@
 
         public List<TransactionModel> Expenses { get; set; }
 
-        public decimal IncomesAmount {  get; set; }
+        public string IncomesAmount {  get; set; }
         
-        public decimal ExpensesAmount { get; set; }
+        public string ExpensesAmount { get; set; }
 
-        public decimal TotalAmount { get; set; }
+        public string TotalAmount { get; set; }
     }
 }

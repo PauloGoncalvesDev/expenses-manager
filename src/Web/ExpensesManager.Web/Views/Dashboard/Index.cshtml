@@ -1,1 +1,25 @@
-﻿<h1>Dashboard</h1>
+﻿@using ExpensesManager.Web.Models;
+@model DashboardModel
+
+@{
+    ViewData["Title"] = "Estatísticas";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+</head>
+
+
+<div class="row mb-4 pt-4">
+    <div class="col-lg-4 mb-3 mb-lg-0">
+        @await Html.PartialAsync("_PartialCardIncome", Model.IncomesAmount)
+    </div>
+
+    <div class="col-lg-4 mb-3 mb-lg-0">
+        @await Html.PartialAsync("_PartialCardExpense", Model.ExpensesAmount)
+    </div>
+
+    <div class="col-lg-4 mb-3 mb-lg-0">
+        @await Html.PartialAsync("_PartialCardTotal", Model.TotalAmount)
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿.widget {
+    border-radius: 1rem;
+    background-color: var(--fundo-secundario);
+}
+
+    .widget.summary > div:first-child {
+        background-color: var(--fundo-principal);
+        padding: 1rem !important;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border: 3px solid var(--fundo-secundario);
+    }
+
+        .widget.summary > div:first-child i {
+            font-weight: bold;
+            padding: 0.5rem;
+        }
+
+    .widget.income > div:first-child {
+        color: var(--alerta-sucesso-fundo);
+    }
+
+    .widget.expense > div:first-child {
+        color: var(--alerta-erro-fundo);
+    }
+
+    .widget.total > div:first-child {
+        color: #2aa1ff;
+    }
