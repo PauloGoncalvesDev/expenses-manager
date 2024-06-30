@@ -6,11 +6,11 @@
 <h1>Lista de Movimentações</h1>
 
 @{
-    if (Model == null)
+    if (Model == null || !Model.Any())
     {
         <tr>
             <td colspan="4">
-                <p>Por enquanto ainda não há gastos registrados.</p>
+                <p>Por enquanto ainda não há movimentações registradas.</p>
             </td>
         </tr>
     }
