@@ -12,7 +12,7 @@
             <select asp-for="Type" asp-items="Html.GetEnumSelectList<TransactionType>()" class="form-select input-font-size" required></select>
         </div>
         <div class="mb-4">
-            <input asp-for="Amount" type="text" class="form-control number-input input-font-size" id="transactionAmountInput" placeholder="Valor" required>
+            <input asp-for="Amount" type="text" class="form-control number-input input-font-size moneyInput" id="transactionAmountInput" placeholder="Valor" maxlength="8" required>
         </div>
         <div class="mb-4">
             <input asp-for="TransactionDate" type="date" class="form-control input-font-size" id="transactionDateInput" placeholder="Data" required>
