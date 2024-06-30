@@ -24,7 +24,8 @@ namespace ExpensesManager.Application
 
         private static void AddApplicationTransaction(IServiceCollection serviceDescriptors)
         {
-            serviceDescriptors.AddScoped<ICreateTransaction, CreateTransaction>();
+            serviceDescriptors.AddScoped<ICreateTransaction, CreateTransaction>()
+                              .AddScoped<IGetTransaction, GetTransaction>();
         }
     }
 }

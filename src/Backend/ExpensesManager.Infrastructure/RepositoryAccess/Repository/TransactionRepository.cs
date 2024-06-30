@@ -1,5 +1,7 @@
 ﻿using ExpensesManager.Domain.Entities;
+using ExpensesManager.Domain.Enum;
 using ExpensesManager.Domain.Repositories.TransactionRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 {
@@ -15,6 +17,13 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         public async Task Add(Transaction transaction)
         {
             await _context.Transaction.AddAsync(transaction);
+        }
+
+        public async Task<List<Transaction>> GetTransactionsByType(CategoryType categoryType)
+        {
+            return await _context.Transaction.Where(t => _context.Category
+                                             .Any(c => c.Id == t.CategoryId && c.Type == categoryType))
+                                             .ToListAsync();
         }
     }
 }
