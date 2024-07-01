@@ -23,23 +23,13 @@ namespace ExpensesManager.Web.Utilities.Mapper
             return new DashboardModel
             {
                 Incomes = incomeTransactionModel,
-                IncomesAmount = FormatAmount(incomesAmount),
+                IncomesAmount = Utilities.FormatAmount(incomesAmount),
                 Expenses = expenseTransactionModel,
-                ExpensesAmount = FormatAmount(expensesAmount),
-                TotalAmount = FormatAmount(totalAmount)
+                ExpensesAmount = Utilities.FormatAmount(expensesAmount),
+                TotalAmount = Utilities.FormatAmount(totalAmount),
+                DoughnutExpenseData = DoughnutMapper.CreateDoughnutExpenseModel(expenseTransactions),
+                DoughnutIncomeData = DoughnutMapper.CreateDoughnutIncomeModel(incomeTransactions)
             };
-        }
-
-        private string FormatAmount(decimal amount)
-        {
-            string formattedAmount;
-
-            if (Math.Abs(amount) >= 1000000)
-                formattedAmount = (amount / 1000000).ToString("N2", new System.Globalization.CultureInfo("pt-BR")) + "M";
-            else
-                formattedAmount = amount.ToString("N2", new System.Globalization.CultureInfo("pt-BR"));
-
-            return formattedAmount;
         }
     }
 }
