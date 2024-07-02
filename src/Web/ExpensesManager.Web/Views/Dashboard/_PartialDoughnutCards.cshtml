@@ -1,41 +1,4 @@
 ﻿@using ExpensesManager.Web.Models;
 @model DashboardModel
 
-<div class="col-lg-6 mb-3 mb-lg-0">
-    <div class="widget chart">
-        <div class="title p-4">
-            <h5 class="fw-bold">Entradas por Tipo</h5>
-        </div>
-        <ejs-accumulationchart id="container_income" background="#2E2E3E">
-            <e-accumulation-series-collection>
-                <e-accumulation-series dataSource="@Model.DoughnutIncomeData" xName="Title" yName="Amount"
-                                       innerRadius="50%" legendShape="Circle">
-                    <e-accumulationseries-datalabel name="FormatedAmount" visible></e-accumulationseries-datalabel>
-                </e-accumulation-series>
-            </e-accumulation-series-collection>
-            <e-accumulationchart-legendsettings>
-                <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
-            </e-accumulationchart-legendsettings>
-            <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
-        </ejs-accumulationchart>
-    </div>
-</div>
-<div class="col-lg-6 mb-3 mb-lg-0">
-    <div class="widget chart">
-        <div class="title p-4">
-            <h5 class="fw-bold">Saídas por Tipo</h5>
-        </div>
-        <ejs-accumulationchart id="container-expense" background="#2E2E3E">
-            <e-accumulation-series-collection>
-                <e-accumulation-series dataSource="@Model.DoughnutExpenseData" xName="Title" yName="Amount"
-                                       innerRadius="50%" legendShape="Circle">
-                    <e-accumulationseries-datalabel name="FormatedAmount" visible></e-accumulationseries-datalabel>
-                </e-accumulation-series>
-            </e-accumulation-series-collection>
-            <e-accumulationchart-legendsettings>
-                <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
-            </e-accumulationchart-legendsettings>
-            <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
-        </ejs-accumulationchart>
-    </div>
-</div>
+<h1>Estatísticas</h1>

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="26.1.39" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Backend\ExpensesManager.Application\ExpensesManager.Application.csproj" />
     <ProjectReference Include="..\..\Backend\ExpensesManager.Domain\ExpensesManager.Domain.csproj" />
     <ProjectReference Include="..\..\Backend\ExpensesManager.Infrastructure\ExpensesManager.Infrastructure.csproj" />
