@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
 </head>
 
+<span id="error-message" style="display:none;"></span>
+<span id="success-message" style="display:none;"></span>
 
 <div class="row mb-4 pt-4">
     <div class="col-lg-4 mb-3 mb-lg-0">
@@ -25,5 +27,8 @@
 </div>
 
 <div class="row mb-4 pt-4">
-    @await Html.PartialAsync("_PartialDoughnutCards", Model)
+    @await Html.PartialAsync("_PartialDoughnutCards")
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/doughnut.js" asp-append-version="true"></script>
