@@ -2,7 +2,8 @@
 {
     public enum EnumVersion
     {
-        CreateTableCategory = 0,
-        CreateTableTransaction = 1
+        CreateTableUserAndAdditionalInfoUser = 0,
+        CreateTableCategory = 1,
+        CreateTableTransaction = 2
     }
 }

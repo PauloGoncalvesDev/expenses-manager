@@ -7,6 +7,10 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess
     {
         public ExpensesManagerContext(DbContextOptions<ExpensesManagerContext> options) : base(options) { }
 
+        public DbSet<User> User { get; set; }
+
+        public DbSet<AdditionalInfoUser> AdditionalInfoUser { get; set; }
+
         public DbSet<Category> Category { get; set; }
 
         public DbSet<Transaction> Transaction { get; set; }
