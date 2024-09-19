@@ -13,9 +13,9 @@ namespace ExpensesManager.Application.BusinessRules.UserBusinessRule
             _userReadOnlyRepository = userReadOnlyRepository;
         }
 
-        public Task<User> Execute(string mail)
+        public async Task<User> Execute(string mail)
         {
-            return _userReadOnlyRepository.GetUserByMail(mail);
+            return await _userReadOnlyRepository.GetUserByMail(mail);
         }
     }
 }

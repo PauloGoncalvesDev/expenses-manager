@@ -97,6 +97,42 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Senha ou e-mail incorretos..
+        /// </summary>
+        public static string EXISTING_USER {
+            get {
+                return ResourceManager.GetString("EXISTING_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail do usuário não pode estar vazio.
+        /// </summary>
+        public static string MAIL_EMPTY {
+            get {
+                return ResourceManager.GetString("MAIL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome do usuário não pode estar vazio.
+        /// </summary>
+        public static string NAME_EMPTY {
+            get {
+                return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha do usuário não pode estar vazio.
+        /// </summary>
+        public static string PASSWORD_EMPTY {
+            get {
+                return ResourceManager.GetString("PASSWORD_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Título da movimentação não pode estar vazio.
         /// </summary>
         public static string TITLE_EMPTY {

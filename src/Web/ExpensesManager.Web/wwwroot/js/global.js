@@ -7,6 +7,10 @@
     });
 
     $('.moneyInput').mask('000.000,00', { reverse: true });
+
+    $(".close-alert").click(function () {
+        $('#error-message').hide('hide');
+    });
 });
 
 function showError(message) {

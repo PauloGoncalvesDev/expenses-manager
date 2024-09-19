@@ -20,7 +20,7 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 
         public async Task<User> GetUserByMail(string mail)
         {
-            return await _context.User.AsNoTracking().FirstOrDefaultAsync(x => x.Equals(mail));
+            return await _context.User.AsNoTracking().FirstOrDefaultAsync(x => x.Mail.Equals(mail));
         }
     }
 }

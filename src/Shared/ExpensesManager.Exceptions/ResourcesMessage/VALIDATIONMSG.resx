@@ -129,6 +129,18 @@
   <data name="DESCRIPTION_NUMBER" xml:space="preserve">
     <value>Descrição da movimentação não pode conter apenas números</value>
   </data>
+  <data name="EXISTING_USER" xml:space="preserve">
+    <value>Senha ou e-mail incorretos.</value>
+  </data>
+  <data name="MAIL_EMPTY" xml:space="preserve">
+    <value>E-mail do usuário não pode estar vazio</value>
+  </data>
+  <data name="NAME_EMPTY" xml:space="preserve">
+    <value>Nome do usuário não pode estar vazio</value>
+  </data>
+  <data name="PASSWORD_EMPTY" xml:space="preserve">
+    <value>Senha do usuário não pode estar vazio</value>
+  </data>
   <data name="TITLE_EMPTY" xml:space="preserve">
     <value>Título da movimentação não pode estar vazio</value>
   </data>
