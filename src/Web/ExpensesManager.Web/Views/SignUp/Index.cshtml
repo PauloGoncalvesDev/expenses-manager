@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "_ExternalLayout";
+}
+
+<div class="row mt-5 mb-4 pt-4 d-flex justify-content-center">
+    <form class="mt-3 col-lg-4" id="registrationForm">
+        <fieldset>
+            <h1 class="text-center mb-4">CADASTRO</h1>
+            <div class="mb-3">
+                <input type="email" class="form-control input-font-size" id="identificationInput" placeholder="E-mail" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control input-font-size" id="passwordInput" placeholder="Senha" required maxlength="30">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control input-font-size" id="confirmPasswordInput" placeholder="Confirmar Senha" required maxlength="30">
+                <small id="passwordMatchHelpBlock" class="form-text text-danger d-none">As senhas não coincidem.</small>
+            </div>
+
+            <ul id="passwordCriteriaList" class="list-unstyled">
+                <li id="lengthCriteria" class="text-danger f-1"><small>Pelo menos 8 caracteres</small></li>
+                <li id="uppercaseCriteria" class="text-danger"><small>Pelo menos 1 letra maiúscula</small></li>
+                <li id="lowercaseCriteria" class="text-danger"><small>Pelo menos 1 letra minúscula</small></li>
+                <li id="numberCriteria" class="text-danger"><small>Pelo menos 1 número</small></li>
+                <li id="specialCharCriteria" class="text-danger"><small>Pelo menos 1 caractere especial (@@, $, !, %, *, ?, &)</small></li>
+            </ul>
+
+            <div>
+                <button type="submit" class="button-font-size btn button-primary w-100">Cadastrar</button>
+            </div>
+        </fieldset>
+
+        <div class="text-center text-lg-start d-flex">
+            <p class="small mt-2 pt-1 mb-0">
+                Já tem uma conta? <a href="/Login" class="fw-bold">Login</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/password.js" asp-append-version="true"></script>
