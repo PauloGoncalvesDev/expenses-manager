@@ -2,6 +2,7 @@
 using ExpensesManager.Domain.Repositories;
 using ExpensesManager.Domain.Repositories.CategoryRepository;
 using ExpensesManager.Domain.Repositories.TransactionRepository;
+using ExpensesManager.Domain.Repositories.UserRepository;
 using ExpensesManager.Infrastructure.RepositoryAccess;
 using ExpensesManager.Infrastructure.RepositoryAccess.Repository;
 using FluentMigrator.Runner;
@@ -57,7 +58,9 @@ namespace ExpensesManager.Infrastructure
             serviceDescriptors.AddScoped<ITransactionReadOnlyRepository, TransactionRepository>()
                               .AddScoped<ITransactionWriteOnlyRepository, TransactionRepository>()
                               .AddScoped<ICategoryReadOnlyRepository, CategoryRepository>()
-                              .AddScoped<ICategoryWriteOnlyRepository, CategoryRepository>();
+                              .AddScoped<ICategoryWriteOnlyRepository, CategoryRepository>()
+                              .AddScoped<IUserReadOnlyRepository, UserRepository>()
+                              .AddScoped<IUserWriteOnlyRepository, UserRepository>();
 
         }
     }

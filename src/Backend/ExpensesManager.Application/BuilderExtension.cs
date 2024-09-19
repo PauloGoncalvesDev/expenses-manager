@@ -1,7 +1,9 @@
 ﻿using ExpensesManager.Application.BusinessRules.CategoryBusinessRule;
 using ExpensesManager.Application.BusinessRules.Interfaces.Category;
 using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
+using ExpensesManager.Application.BusinessRules.Interfaces.User;
 using ExpensesManager.Application.BusinessRules.TransactionBusinessRule;
+using ExpensesManager.Application.BusinessRules.UserBusinessRule;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +16,8 @@ namespace ExpensesManager.Application
             AddApplicationCategory(serviceDescriptors);
 
             AddApplicationTransaction(serviceDescriptors);
+
+            AddApplicationUser(serviceDescriptors);
         }
 
         private static void AddApplicationCategory(IServiceCollection serviceDescriptors)
@@ -26,6 +30,12 @@ namespace ExpensesManager.Application
         {
             serviceDescriptors.AddScoped<ICreateTransaction, CreateTransaction>()
                               .AddScoped<IGetTransaction, GetTransaction>();
+        }
+
+        private static void AddApplicationUser(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ICreateUser, CreateUser>()
+                              .AddScoped<IGetUser, GetUser>();
         }
     }
 }
