@@ -4,6 +4,7 @@ using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
 using ExpensesManager.Application.BusinessRules.Interfaces.User;
 using ExpensesManager.Application.BusinessRules.TransactionBusinessRule;
 using ExpensesManager.Application.BusinessRules.UserBusinessRule;
+using ExpensesManager.Application.Services.Cryptography;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,11 +14,20 @@ namespace ExpensesManager.Application
     {
         public static void AddApplication(this IServiceCollection serviceDescriptors, IConfiguration configuration)
         {
+            AddApplicationServicePasswordEncryption(serviceDescriptors, configuration);
+
             AddApplicationCategory(serviceDescriptors);
 
             AddApplicationTransaction(serviceDescriptors);
 
             AddApplicationUser(serviceDescriptors);
+        }
+
+        private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors, IConfiguration configuration)
+        {
+            string secretPassword = configuration.GetRequiredSection("Configuration:SecretPassword").Value ?? string.Empty;
+
+            serviceDescriptors.AddScoped(options => new PasswordEncryption(secretPassword));
         }
 
         private static void AddApplicationCategory(IServiceCollection serviceDescriptors)
