@@ -10,6 +10,8 @@
 
         public string Password { get; set; }
 
+        public string Salt { get; set; }
+
         public DateTime CreationDate { get; set; }
 
         public DateTime UpdateDate { get; set; }

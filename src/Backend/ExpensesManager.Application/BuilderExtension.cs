@@ -14,7 +14,7 @@ namespace ExpensesManager.Application
     {
         public static void AddApplication(this IServiceCollection serviceDescriptors, IConfiguration configuration)
         {
-            AddApplicationServicePasswordEncryption(serviceDescriptors, configuration);
+            AddApplicationServicePasswordEncryption(serviceDescriptors);
 
             AddApplicationCategory(serviceDescriptors);
 
@@ -23,11 +23,9 @@ namespace ExpensesManager.Application
             AddApplicationUser(serviceDescriptors);
         }
 
-        private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors, IConfiguration configuration)
+        private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
         {
-            string secretPassword = configuration.GetRequiredSection("Configuration:SecretPassword").Value ?? string.Empty;
-
-            serviceDescriptors.AddScoped(options => new PasswordEncryption(secretPassword));
+            serviceDescriptors.AddScoped(options => new PasswordEncryption());
         }
 
         private static void AddApplicationCategory(IServiceCollection serviceDescriptors)

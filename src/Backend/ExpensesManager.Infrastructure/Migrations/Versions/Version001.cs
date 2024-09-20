@@ -26,7 +26,8 @@ namespace ExpensesManager.Infrastructure.Migrations.Versions
                 .WithColumn("DeletionDate").AsDateTime().Nullable()
                 .WithColumn("Mail").AsString().NotNullable()
                 .WithColumn("Name").AsString().NotNullable()
-                .WithColumn("Password").AsString().NotNullable();
+                .WithColumn("Password").AsString().NotNullable()
+                .WithColumn("Salt").AsString().NotNullable();
         }
 
         private void CreateAdditionalInfoUserTable()

@@ -23,7 +23,9 @@ namespace ExpensesManager.Application.BusinessRules.UserBusinessRule
 
         public async Task Execute(User user)
         {
-            user.Password = _passwordEncryption.Encrypt(user.Password);
+            user.Salt = Guid.NewGuid().ToString().Replace("-", "");
+
+            user.Password = _passwordEncryption.Encrypt(user.Password, user.Salt);
 
             await _userWriteOnlyRepository.Add(user);
 
