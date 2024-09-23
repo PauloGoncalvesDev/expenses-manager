@@ -5,6 +5,7 @@ using ExpensesManager.Application.BusinessRules.Interfaces.User;
 using ExpensesManager.Application.BusinessRules.TransactionBusinessRule;
 using ExpensesManager.Application.BusinessRules.UserBusinessRule;
 using ExpensesManager.Application.Services.Cryptography;
+using ExpensesManager.Application.Services.Token;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,8 @@ namespace ExpensesManager.Application
         {
             AddApplicationServicePasswordEncryption(serviceDescriptors);
 
+            AddApplicationServiceTokenJWT(serviceDescriptors, configuration);
+
             AddApplicationCategory(serviceDescriptors);
 
             AddApplicationTransaction(serviceDescriptors);
@@ -26,6 +29,15 @@ namespace ExpensesManager.Application
         private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped(options => new PasswordEncryption());
+        }
+
+        private static void AddApplicationServiceTokenJWT(IServiceCollection serviceDescriptors, IConfiguration configuration)
+        {
+            int expirationTime = Convert.ToInt32(configuration.GetRequiredSection("Configuration:Jwt:JwtExpirationTime").Value);
+
+            string securityPassword = configuration.GetRequiredSection("Configuration:Jwt:JwtSecurityPassword").Value;
+
+            serviceDescriptors.AddScoped(options => new TokenService(securityPassword, expirationTime));
         }
 
         private static void AddApplicationCategory(IServiceCollection serviceDescriptors)
