@@ -6,6 +6,8 @@ using ExpensesManager.Web.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRepository(builder.Configuration);
