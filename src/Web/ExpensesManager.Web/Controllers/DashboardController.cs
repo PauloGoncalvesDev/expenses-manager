@@ -1,11 +1,13 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
 using ExpensesManager.Domain.Entities;
+using ExpensesManager.Web.Filters;
 using ExpensesManager.Web.Models;
 using ExpensesManager.Web.Utilities.Mapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpensesManager.Web.Controllers
 {
+    [ServiceFilter(typeof(AuthorizationFilter))]
     public class DashboardController : Controller
     {
         public async Task<IActionResult> Index([FromServices] IGetTransaction getTransaction)

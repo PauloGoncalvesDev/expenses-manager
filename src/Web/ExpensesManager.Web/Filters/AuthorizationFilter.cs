@@ -27,10 +27,7 @@ namespace ExpensesManager.Web.Filters
 
                 string email = _tokenService.GetEmailFromTokenJwt(token);
 
-                User user = await _userReadOnlyRepository.GetUserByMail(email);
-
-                if (user == null)
-                    throw new Exception();
+                User user = await _userReadOnlyRepository.GetUserByMail(email) ?? throw new Exception();
             }
             catch (Exception ex)
             {

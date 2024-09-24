@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.User;
 using ExpensesManager.Application.Services.Cryptography;
+using ExpensesManager.Application.Services.Token;
 using ExpensesManager.Domain.Entities;
 using ExpensesManager.Exceptions.Exceptions;
 using ExpensesManager.Exceptions.ResourcesMessage;
@@ -15,13 +16,15 @@ namespace ExpensesManager.Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Login([FromForm] UserModel userModel, [FromServices] IGetUser getUser, [FromServices] PasswordEncryption passwordEncryption)
+        public async Task<ActionResult> Login([FromForm] UserModel userModel, [FromServices] IGetUser getUser, [FromServices] PasswordEncryption passwordEncryption, [FromServices] TokenService tokenService)
         {
             try
             {
                 User user = await getUser.Execute(userModel.Mail);
 
                 ValidateUser(user, userModel.Password, passwordEncryption);
+
+                tokenService.SaveTokenOnCookie(Response, tokenService.GenerateTokenJwt(user.Mail));
 
                 return RedirectToAction("Index", "Dashboard");
             }
