@@ -18,5 +18,10 @@ namespace ExpensesManager.Application.BusinessRules.TransactionBusinessRule
         {
             return await _transactionReadOnlyRepository.GetTransactionsByType(categoryType);
         }
+
+        public async Task<List<Transaction>> Execute(CategoryType categoryType, long userId)
+        {
+            return await _transactionReadOnlyRepository.GetTransactionsByTypeAndUserId(categoryType, userId);
+        }
     }
 }

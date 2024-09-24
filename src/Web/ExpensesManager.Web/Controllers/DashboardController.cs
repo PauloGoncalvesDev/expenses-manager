@@ -1,4 +1,5 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
+using ExpensesManager.Application.Services.LoggedUser;
 using ExpensesManager.Domain.Entities;
 using ExpensesManager.Web.Filters;
 using ExpensesManager.Web.Models;
@@ -10,18 +11,18 @@ namespace ExpensesManager.Web.Controllers
     [ServiceFilter(typeof(AuthorizationFilter))]
     public class DashboardController : Controller
     {
-        public async Task<IActionResult> Index([FromServices] IGetTransaction getTransaction)
+        public async Task<IActionResult> Index([FromServices] IGetTransaction getTransaction, [FromServices] ILoggedUser loggedUser)
         {
-            DashboardModel dashboardModel = await GetDashboardModel(getTransaction);
+            DashboardModel dashboardModel = await GetDashboardModel(getTransaction, loggedUser);
 
             return View(dashboardModel);
         }
 
-        public async Task<ActionResult> LoadCharts([FromServices] IGetTransaction getTransaction)
+        public async Task<ActionResult> LoadCharts([FromServices] IGetTransaction getTransaction, [FromServices] ILoggedUser loggedUser)
         {
             try
             {
-                DashboardModel dashboardModel = await GetDashboardModel(getTransaction);
+                DashboardModel dashboardModel = await GetDashboardModel(getTransaction, loggedUser);
 
                 return new JsonResult(new { success = true, dashboardModel });
             }
@@ -31,11 +32,13 @@ namespace ExpensesManager.Web.Controllers
             }
         }
 
-        private async Task<DashboardModel> GetDashboardModel([FromServices] IGetTransaction getTransaction)
+        private async Task<DashboardModel> GetDashboardModel([FromServices] IGetTransaction getTransaction, [FromServices] ILoggedUser loggedUser)
         {
-            List<Transaction> incomeList = await getTransaction.Execute(Domain.Enum.CategoryType.Income);
+            User user = await loggedUser.GetLoggedUser();
 
-            List<Transaction> expensesList = await getTransaction.Execute(Domain.Enum.CategoryType.Expenses);
+            List<Transaction> incomeList = await getTransaction.Execute(Domain.Enum.CategoryType.Income, user.Id);
+
+            List<Transaction> expensesList = await getTransaction.Execute(Domain.Enum.CategoryType.Expenses, user.Id);
 
             DashboardModel dashboardModel = new DashboardMapper().Map(incomeList, expensesList);
 

@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Application.BusinessRules.Interfaces.Category;
 using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
+using ExpensesManager.Application.Services.LoggedUser;
 using ExpensesManager.Domain.Entities;
 using ExpensesManager.Exceptions.Exceptions;
 using ExpensesManager.Exceptions.ResourcesMessage;
@@ -18,11 +19,15 @@ namespace ExpensesManager.Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> AddCategory([FromForm] CategoryModel categoryModel, [FromServices] ICreateCategory createCategory)
+        public async Task<ActionResult> AddCategory([FromForm] CategoryModel categoryModel, [FromServices] ICreateCategory createCategory, [FromServices] ILoggedUser loggedUser)
         {
             try
             {
                 Category category = new CategoryMapper().Map(categoryModel);
+
+                User user = await loggedUser.GetLoggedUser();
+
+                category.UserId = user.Id;
 
                 await createCategory.Execute(category);
 
@@ -41,11 +46,15 @@ namespace ExpensesManager.Web.Controllers
             }
         }
 
-        public async Task<ActionResult> AddTransaction([FromForm] TransactionModel transactionModel, [FromServices] ICreateTransaction createTransaction)
+        public async Task<ActionResult> AddTransaction([FromForm] TransactionModel transactionModel, [FromServices] ICreateTransaction createTransaction, [FromServices] ILoggedUser loggedUser)
         {
             try
             {
                 Transaction transaction = new TransactionMapper().Map(transactionModel);
+
+                User user = await loggedUser.GetLoggedUser();
+
+                transaction.UserId = user.Id;
 
                 await createTransaction.Execute(transaction);
 

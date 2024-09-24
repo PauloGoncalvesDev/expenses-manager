@@ -25,5 +25,13 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
                                              .Any(c => c.Id == t.CategoryId && c.Type == categoryType))
                                              .ToListAsync();
         }
+
+        public async Task<List<Transaction>> GetTransactionsByTypeAndUserId(CategoryType categoryType, long userId)
+        {
+            return await _context.Transaction.Where(t => _context.Category
+                                             .Any(c => c.Id == t.CategoryId && c.Type == categoryType) 
+                                             && t.UserId == userId)
+                                             .ToListAsync();
+        }
     }
 }
