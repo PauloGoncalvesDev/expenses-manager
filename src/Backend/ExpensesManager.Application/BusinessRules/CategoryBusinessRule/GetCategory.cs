@@ -13,9 +13,9 @@ namespace ExpensesManager.Application.BusinessRules.CategoryBusinessRule
             _categoryReadOnlyRepository = categoryReadOnlyRepository;
         }
 
-        public async Task<List<Category>> Execute()
+        public async Task<List<Category>> Execute(long userId)
         {
-            return await _categoryReadOnlyRepository.GetLastCategories();
+            return await _categoryReadOnlyRepository.GetLastCategoriesByUserId(userId);
         }
     }
 }

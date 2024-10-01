@@ -18,10 +18,10 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
             await _context.Category.AddAsync(category);
         }
 
-        public async Task<List<Category>> GetLastCategories()
+        public async Task<List<Category>> GetLastCategoriesByUserId(long userId)
         {
             return await _context.Category.AsNoTracking()
-                .Where(category => category.DeletionDate == null)
+                .Where(category => category.UserId == userId && category.DeletionDate == null)
                 .OrderByDescending(order => order.CreationDate)
                 .Take(10)
                 .ToListAsync();

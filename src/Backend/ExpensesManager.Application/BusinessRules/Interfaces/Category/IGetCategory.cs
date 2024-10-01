@@ -2,6 +2,6 @@
 {
     public interface IGetCategory
     {
-        public Task<List<Domain.Entities.Category>> Execute();
+        public Task<List<Domain.Entities.Category>> Execute(long userId);
     }
 }

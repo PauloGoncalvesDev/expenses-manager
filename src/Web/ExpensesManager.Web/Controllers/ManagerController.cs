@@ -73,11 +73,13 @@ namespace ExpensesManager.Web.Controllers
             }
         }
 
-        public async Task<ActionResult> LoadCategoriesList([FromServices] IGetCategory getCategory)
+        public async Task<ActionResult> LoadCategoriesList([FromServices] IGetCategory getCategory, [FromServices] ILoggedUser loggedUser)
         {
             try
             {
-                List<Category> categoryList = await getCategory.Execute();
+                User user = await loggedUser.GetLoggedUser();
+
+                List<Category> categoryList = await getCategory.Execute(user.Id);
 
                 List<CategoryModel> categoryModelList = new List<CategoryModel>();
 

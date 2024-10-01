@@ -4,6 +4,6 @@ namespace ExpensesManager.Domain.Repositories.CategoryRepository
 {
     public interface ICategoryReadOnlyRepository
     {
-        public Task<List<Category>> GetLastCategories();
+        public Task<List<Category>> GetLastCategoriesByUserId(long userId);
     }
 }
