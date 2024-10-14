@@ -71,6 +71,18 @@ namespace ExpensesManager.Application.Services.Token
                     });
         }
 
+        public void DeleteCookie(HttpResponse response)
+        {
+            response.Cookies.Delete("token_expensemanager_auth",
+                    new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        IsEssential = true,
+                        SameSite = SameSiteMode.None
+                    });
+        }
+
         public string GetEmailFromTokenJwt(string tokenJwt)
         {
             ClaimsPrincipal claimsPrincipal = ValidateTokenJwt(tokenJwt);

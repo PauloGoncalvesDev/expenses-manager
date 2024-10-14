@@ -179,3 +179,14 @@ a {
 .type-Expenses::after {
     background-color: var(--alerta-erro-fundo);
 }
+
+.dropdown-item:hover{
+    background: none;
+}
+
+@media (max-width: 576px) {
+    .dropdown-menu {
+        position: relative;
+        background-color: var(--fundo-principal)
+    }
+}

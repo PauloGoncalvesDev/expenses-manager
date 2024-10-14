@@ -24,15 +24,23 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav navbar-flex flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Manager" asp-action="Index">Gerenciar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Estatísticas</a>
                         </li>
                     </ul>
+                    <div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="" class="rounded-circle" alt="Imagem do perfil" width="40" height="40" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end secondary-background" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item mb-2" asp-controller="User" asp-action="ViewProfile">Perfil</a></li>
+                                <li><a class="dropdown-item" asp-controller="Logout" asp-action="Logout">Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
