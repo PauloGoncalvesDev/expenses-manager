@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Domain.Extension;
 using ExpensesManager.Domain.Repositories;
+using ExpensesManager.Domain.Repositories.AdditionalInfoUserRepository.cs;
 using ExpensesManager.Domain.Repositories.CategoryRepository;
 using ExpensesManager.Domain.Repositories.TransactionRepository;
 using ExpensesManager.Domain.Repositories.UserRepository;
@@ -60,7 +61,10 @@ namespace ExpensesManager.Infrastructure
                               .AddScoped<ICategoryReadOnlyRepository, CategoryRepository>()
                               .AddScoped<ICategoryWriteOnlyRepository, CategoryRepository>()
                               .AddScoped<IUserReadOnlyRepository, UserRepository>()
-                              .AddScoped<IUserWriteOnlyRepository, UserRepository>();
+                              .AddScoped<IUserWriteOnlyRepository, UserRepository>()
+                              .AddScoped<IAdditionalInfoUserReadOnlyRepository, AdditionalInfoUserRepository>()
+                              .AddScoped<IAdditionalInfoUserWriteOnlyRepository, AdditionalInfoUserRepository>()
+                              .AddScoped<IAdditionalInfoUserUpdateOnlyRepository, AdditionalInfoUserRepository>();
 
         }
     }

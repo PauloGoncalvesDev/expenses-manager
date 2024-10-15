@@ -1,4 +1,6 @@
-﻿using ExpensesManager.Application.BusinessRules.CategoryBusinessRule;
+﻿using ExpensesManager.Application.BusinessRules.AdditionalInfoUserBusinessRule.cs;
+using ExpensesManager.Application.BusinessRules.CategoryBusinessRule;
+using ExpensesManager.Application.BusinessRules.Interfaces.AdditionalInfoUser;
 using ExpensesManager.Application.BusinessRules.Interfaces.Category;
 using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
 using ExpensesManager.Application.BusinessRules.Interfaces.User;
@@ -27,6 +29,8 @@ namespace ExpensesManager.Application
             AddApplicationTransaction(serviceDescriptors);
 
             AddApplicationUser(serviceDescriptors);
+
+            AddApplicationAdditionalInfoUser(serviceDescriptors);
         }
 
         private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
@@ -64,6 +68,13 @@ namespace ExpensesManager.Application
         {
             serviceDescriptors.AddScoped<ICreateUser, CreateUser>()
                               .AddScoped<IGetUser, GetUser>();
+        }
+
+        private static void AddApplicationAdditionalInfoUser(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ICreateAdditionalInfoUser, CreateAdditionalInfoUser>()
+                              .AddScoped<IGetAdditionalInfoUser, GetAdditionalInfoUser>()
+                              .AddScoped<IUpdateAdditionalInfoUser, UpdateAdditionalInfoUser>();
         }
     }
 }
