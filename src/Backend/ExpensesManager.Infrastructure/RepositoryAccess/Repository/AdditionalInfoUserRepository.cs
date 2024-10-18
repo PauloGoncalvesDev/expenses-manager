@@ -27,5 +27,10 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         {
             return await _context.AdditionalInfoUser.FirstOrDefaultAsync(x => x.UserId == userId);
         }
+
+        public void Update(AdditionalInfoUser additionalInfoUser)
+        {
+            _context.AdditionalInfoUser.Update(additionalInfoUser);
+        }
     }
 }
