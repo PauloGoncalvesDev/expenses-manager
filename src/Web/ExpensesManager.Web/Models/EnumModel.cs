@@ -39,5 +39,15 @@ namespace ExpensesManager.Web.Models
             [Display(Name = "Venda")]
             Sale = 11
         }
+
+        public enum GenderType
+        {
+            [Display(Name = "Masculino")]
+            Male = 0,
+            [Display(Name = "Feminino")]
+            Female = 1,
+            [Display(Name = "Outros")]
+            Other = 2
+        }
     }
 }

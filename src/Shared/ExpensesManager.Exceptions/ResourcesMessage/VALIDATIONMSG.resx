@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADDITIONALINFO_ERROR" xml:space="preserve">
+    <value>Erro ao tentar atualizar dados</value>
+  </data>
   <data name="AMOUNT_ZERO" xml:space="preserve">
     <value>Deve ser informado o valor da movimentação</value>
+  </data>
+  <data name="BIRTHDATE_YEARS" xml:space="preserve">
+    <value>A idade deve ser maior que 13 anos</value>
   </data>
   <data name="DATE_FUTURE" xml:space="preserve">
     <value>Não pode ser informada uma data futura</value>
@@ -132,11 +138,20 @@
   <data name="EXISTING_USER" xml:space="preserve">
     <value>Senha ou e-mail incorretos.</value>
   </data>
+  <data name="INVALID_PHONE" xml:space="preserve">
+    <value>Número de telefone informado é inválido</value>
+  </data>
   <data name="MAIL_EMPTY" xml:space="preserve">
     <value>E-mail do usuário não pode estar vazio</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>Nome do usuário não pode estar vazio</value>
+  </data>
+  <data name="NATIONALITY_NUMBER" xml:space="preserve">
+    <value>Nacionalidade não pode conter apenas números</value>
+  </data>
+  <data name="OCCUPATION_NUMBER" xml:space="preserve">
+    <value>Ocupação não pode conter apenas números</value>
   </data>
   <data name="PASSWORD_EMPTY" xml:space="preserve">
     <value>Senha do usuário não pode estar vazio</value>

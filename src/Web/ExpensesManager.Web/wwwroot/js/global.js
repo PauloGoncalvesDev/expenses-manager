@@ -10,7 +10,10 @@
 
     $(".close-alert").click(function () {
         $('#error-message').hide('hide');
+        $('#success-message').hide('hide');
     });
+
+    phoneMask();
 });
 
 function showError(message) {
@@ -52,4 +55,8 @@ function getRandomColor() {
     }
 
     return color;
+}
+
+function phoneMask() {
+    $('#phoneInput').mask('(00) 00000-0000');
 }

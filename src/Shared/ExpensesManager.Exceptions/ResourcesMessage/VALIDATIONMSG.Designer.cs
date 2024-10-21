@@ -61,11 +61,29 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Erro ao tentar atualizar dados.
+        /// </summary>
+        public static string ADDITIONALINFO_ERROR {
+            get {
+                return ResourceManager.GetString("ADDITIONALINFO_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deve ser informado o valor da movimentação.
         /// </summary>
         public static string AMOUNT_ZERO {
             get {
                 return ResourceManager.GetString("AMOUNT_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A idade deve ser maior que 13 anos.
+        /// </summary>
+        public static string BIRTHDATE_YEARS {
+            get {
+                return ResourceManager.GetString("BIRTHDATE_YEARS", resourceCulture);
             }
         }
         
@@ -106,6 +124,15 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Número de telefone informado é inválido.
+        /// </summary>
+        public static string INVALID_PHONE {
+            get {
+                return ResourceManager.GetString("INVALID_PHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail do usuário não pode estar vazio.
         /// </summary>
         public static string MAIL_EMPTY {
@@ -120,6 +147,24 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         public static string NAME_EMPTY {
             get {
                 return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nacionalidade não pode conter apenas números.
+        /// </summary>
+        public static string NATIONALITY_NUMBER {
+            get {
+                return ResourceManager.GetString("NATIONALITY_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocupação não pode conter apenas números.
+        /// </summary>
+        public static string OCCUPATION_NUMBER {
+            get {
+                return ResourceManager.GetString("OCCUPATION_NUMBER", resourceCulture);
             }
         }
         
