@@ -62,6 +62,7 @@ namespace ExpensesManager.Infrastructure
                               .AddScoped<ICategoryWriteOnlyRepository, CategoryRepository>()
                               .AddScoped<IUserReadOnlyRepository, UserRepository>()
                               .AddScoped<IUserWriteOnlyRepository, UserRepository>()
+                              .AddScoped<IUserUpdateOnlyRepository, UserRepository>()
                               .AddScoped<IAdditionalInfoUserReadOnlyRepository, AdditionalInfoUserRepository>()
                               .AddScoped<IAdditionalInfoUserWriteOnlyRepository, AdditionalInfoUserRepository>()
                               .AddScoped<IAdditionalInfoUserUpdateOnlyRepository, AdditionalInfoUserRepository>();

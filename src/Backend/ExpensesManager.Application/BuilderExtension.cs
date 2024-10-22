@@ -67,7 +67,8 @@ namespace ExpensesManager.Application
         private static void AddApplicationUser(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<ICreateUser, CreateUser>()
-                              .AddScoped<IGetUser, GetUser>();
+                              .AddScoped<IGetUser, GetUser>()
+                              .AddScoped<IUpdateUser, UpdateUser>();
         }
 
         private static void AddApplicationAdditionalInfoUser(IServiceCollection serviceDescriptors)
