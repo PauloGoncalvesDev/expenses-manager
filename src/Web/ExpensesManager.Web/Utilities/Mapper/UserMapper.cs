@@ -27,5 +27,31 @@ namespace ExpensesManager.Web.Utilities.Mapper
                 Name = user.Name
             };
         }
+
+        public User Map(User user, AdditionalInfoUserModel additionalInfoUserModel)
+        {
+            bool hasChanges = false;
+
+            void UpdateIfChanged<T>(T currentValue, T newValue, Action<T> updateAction)
+            {
+                if (!EqualityComparer<T>.Default.Equals(currentValue, newValue))
+                {
+                    updateAction(newValue);
+                    hasChanges = true;
+                }
+            }
+
+            UpdateIfChanged(user.Name, additionalInfoUserModel.Name ?? string.Empty, value => user.Name = value);
+
+            UpdateIfChanged(user.Mail, additionalInfoUserModel.Mail ?? string.Empty, value => user.Mail = value);
+
+            if (hasChanges)
+            {
+                user.UpdateDate = DateTime.Now;
+                additionalInfoUserModel.hasChangeUser = true;
+            }
+
+            return user;
+        }
     }
 }

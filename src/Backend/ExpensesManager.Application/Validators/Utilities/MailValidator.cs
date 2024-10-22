@@ -12,7 +12,7 @@ namespace ExpensesManager.Application.Validators.Utilities
                 throw new ValidationException(VALIDATIONMSG.MAIL_EMPTY);
 
             if (!Regex.IsMatch(mail, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
-                throw new ValidationException(VALIDATIONMSG.EXISTING_USER);
+                throw new ValidationException(VALIDATIONMSG.INVALID_MAIL);
         }
     }
 }

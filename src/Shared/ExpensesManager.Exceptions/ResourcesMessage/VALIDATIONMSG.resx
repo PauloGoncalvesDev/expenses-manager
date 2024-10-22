@@ -138,6 +138,9 @@
   <data name="EXISTING_USER" xml:space="preserve">
     <value>Senha ou e-mail incorretos.</value>
   </data>
+  <data name="INVALID_MAIL" xml:space="preserve">
+    <value>E-mail inválido</value>
+  </data>
   <data name="INVALID_PHONE" xml:space="preserve">
     <value>Número de telefone informado é inválido</value>
   </data>

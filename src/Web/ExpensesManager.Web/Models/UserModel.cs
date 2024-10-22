@@ -9,5 +9,7 @@
         public string Password { get; set; }
 
         public long? UserId { get; set; }
+
+        public bool hasChangeUser { get; set; } = false;
     }
 }

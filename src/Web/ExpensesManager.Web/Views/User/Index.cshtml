@@ -43,13 +43,13 @@
         </div>
 
         <div class="col-lg-8">
-            <form asp-controller="User" asp-action="UpdateUser">
+            <form asp-controller="User" asp-action="UpdateUserData">
                 <fieldset class="row">
                     <h3>Informações Básicas</h3>
 
                     <div class="col-lg-6 mb-3">
                         <label for="nameInput" class="form-label">Nome</label>
-                        <input asp-for="Name" type="text" class="form-control" id="nameInput" placeholder="Nome" required>
+                        <input asp-for="Name" type="text" class="form-control" id="nameInput" minlength="3" maxlength="30" placeholder="Nome" required>
                     </div>
 
                     <div class="col-lg-6 mb-3">
@@ -96,7 +96,7 @@
                 </fieldset>
 
                 <input asp-for="UserId" hidden />
-                <button type="submit" asp-controller="User" asp-action="UpdateUser" class="button-form-size button-font-size btn button-primary mt-4 mb-5">Salvar Alterações</button>
+                <button type="submit" asp-controller="User" asp-action="UpdateUserData" class="button-form-size button-font-size btn button-primary mt-4 mb-5">Salvar Alterações</button>
             </form>
         </div>
     </div>

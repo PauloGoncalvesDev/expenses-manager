@@ -61,7 +61,7 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Informações adicionais salvas com sucesso.
+        ///   Looks up a localized string similar to Informações salvas com sucesso.
         /// </summary>
         public static string ADDITIONALINFO_SUCCESS {
             get {

@@ -124,6 +124,15 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail inválido.
+        /// </summary>
+        public static string INVALID_MAIL {
+            get {
+                return ResourceManager.GetString("INVALID_MAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Número de telefone informado é inválido.
         /// </summary>
         public static string INVALID_PHONE {

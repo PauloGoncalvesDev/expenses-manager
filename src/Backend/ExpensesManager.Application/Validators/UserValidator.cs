@@ -17,6 +17,13 @@ namespace ExpensesManager.Application.Validators
             PasswordValidator.Validate(user.Password);
         }
 
+        public static void ValidateToUpdate(User user)
+        {
+            ValidateUserName(user.Name);
+
+            MailValidator.Validate(user.Mail);
+        }
+
         private static void ValidateUserName(string name)
         {
             if (string.IsNullOrEmpty(name))
