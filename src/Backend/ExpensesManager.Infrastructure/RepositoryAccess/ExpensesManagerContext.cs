@@ -15,6 +15,8 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess
 
         public DbSet<Transaction> Transaction { get; set; }
 
+        public DbSet<UserImage> UserImage { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ExpensesManagerContext).Assembly);

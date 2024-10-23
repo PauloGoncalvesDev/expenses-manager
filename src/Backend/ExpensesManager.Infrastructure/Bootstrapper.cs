@@ -3,6 +3,7 @@ using ExpensesManager.Domain.Repositories;
 using ExpensesManager.Domain.Repositories.AdditionalInfoUserRepository.cs;
 using ExpensesManager.Domain.Repositories.CategoryRepository;
 using ExpensesManager.Domain.Repositories.TransactionRepository;
+using ExpensesManager.Domain.Repositories.UserImageRepository;
 using ExpensesManager.Domain.Repositories.UserRepository;
 using ExpensesManager.Infrastructure.RepositoryAccess;
 using ExpensesManager.Infrastructure.RepositoryAccess.Repository;
@@ -67,6 +68,13 @@ namespace ExpensesManager.Infrastructure
                               .AddScoped<IAdditionalInfoUserWriteOnlyRepository, AdditionalInfoUserRepository>()
                               .AddScoped<IAdditionalInfoUserUpdateOnlyRepository, AdditionalInfoUserRepository>();
 
+            AddUserImageRepository(serviceDescriptors);
+        }
+
+        private static void AddUserImageRepository(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<IUserImageReadOnlyRepository, UserImageRepository>()
+                             .AddScoped<IUserImageWriteOnlyRepository, UserImageRepository>();
         }
     }
 }

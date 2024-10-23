@@ -4,6 +4,7 @@
     {
         CreateTableUserAndAdditionalInfoUser = 0,
         CreateTableCategory = 1,
-        CreateTableTransaction = 2
+        CreateTableTransaction = 2,
+        CreateTableUserImage = 3
     }
 }
