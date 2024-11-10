@@ -74,7 +74,8 @@ namespace ExpensesManager.Infrastructure
         private static void AddUserImageRepository(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<IUserImageReadOnlyRepository, UserImageRepository>()
-                             .AddScoped<IUserImageWriteOnlyRepository, UserImageRepository>();
+                             .AddScoped<IUserImageWriteOnlyRepository, UserImageRepository>()
+                             .AddScoped<IUserImageUpdateOnlyRepository, UserImageRepository>();
         }
     }
 }

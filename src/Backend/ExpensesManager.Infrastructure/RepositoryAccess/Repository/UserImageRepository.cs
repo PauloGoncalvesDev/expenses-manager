@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 {
-    public class UserImageRepository : IUserImageReadOnlyRepository, IUserImageWriteOnlyRepository
+    public class UserImageRepository : IUserImageReadOnlyRepository, IUserImageWriteOnlyRepository, IUserImageUpdateOnlyRepository
     {
         private readonly ExpensesManagerContext _context;
 
@@ -21,6 +21,16 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
         public async Task<UserImage> GetUserImageByUserId(long userId)
         {
             return await _context.UserImage.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userId);
+        }
+
+        public async Task<UserImage> GetUserImageByUserIdToUpdate(long userId)
+        {
+            return await _context.UserImage.Where(x => x.UserId == userId && x.DeletionDate == null).FirstOrDefaultAsync();
+        }
+
+        public void Update(UserImage userImage)
+        {
+            _context.UserImage.Update(userImage);
         }
     }
 }

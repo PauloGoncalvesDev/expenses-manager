@@ -4,9 +4,12 @@ using ExpensesManager.Application.BusinessRules.Interfaces.AdditionalInfoUser;
 using ExpensesManager.Application.BusinessRules.Interfaces.Category;
 using ExpensesManager.Application.BusinessRules.Interfaces.Transaction;
 using ExpensesManager.Application.BusinessRules.Interfaces.User;
+using ExpensesManager.Application.BusinessRules.Interfaces.UserImage;
 using ExpensesManager.Application.BusinessRules.TransactionBusinessRule;
 using ExpensesManager.Application.BusinessRules.UserBusinessRule;
+using ExpensesManager.Application.BusinessRules.UserImageBusinessRule;
 using ExpensesManager.Application.Services.Cryptography;
+using ExpensesManager.Application.Services.Images;
 using ExpensesManager.Application.Services.LoggedUser;
 using ExpensesManager.Application.Services.Token;
 using Microsoft.Extensions.Configuration;
@@ -24,13 +27,9 @@ namespace ExpensesManager.Application
 
             AddApplicationLoggedUser(serviceDescriptors);
 
-            AddApplicationCategory(serviceDescriptors);
+            AddApplicationImageService(serviceDescriptors, configuration);
 
-            AddApplicationTransaction(serviceDescriptors);
-
-            AddApplicationUser(serviceDescriptors);
-
-            AddApplicationAdditionalInfoUser(serviceDescriptors);
+            AddApplicationBusinessRule(serviceDescriptors);
         }
 
         private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
@@ -45,6 +44,26 @@ namespace ExpensesManager.Application
             string securityPassword = configuration.GetRequiredSection("Configuration:Jwt:JwtSecurityPassword").Value;
 
             serviceDescriptors.AddScoped(options => new TokenService(securityPassword, expirationTime));
+        }
+
+        private static void AddApplicationImageService(IServiceCollection serviceDescriptors, IConfiguration configuration)
+        {
+            string imagePath = configuration.GetRequiredSection("Configuration:ProfileImagePath").Value;
+
+            serviceDescriptors.AddScoped(options => new ImageService(imagePath));
+        }
+
+        private static void AddApplicationBusinessRule(IServiceCollection serviceDescriptors)
+        {
+            AddApplicationCategory(serviceDescriptors);
+
+            AddApplicationTransaction(serviceDescriptors);
+
+            AddApplicationUser(serviceDescriptors);
+
+            AddApplicationAdditionalInfoUser(serviceDescriptors);
+
+            AddApplicationUserImage(serviceDescriptors);
         }
 
         private static void AddApplicationLoggedUser(IServiceCollection serviceDescriptors)
@@ -76,6 +95,13 @@ namespace ExpensesManager.Application
             serviceDescriptors.AddScoped<ICreateAdditionalInfoUser, CreateAdditionalInfoUser>()
                               .AddScoped<IGetAdditionalInfoUser, GetAdditionalInfoUser>()
                               .AddScoped<IUpdateAdditionalInfoUser, UpdateAdditionalInfoUser>();
+        }
+
+        private static void AddApplicationUserImage(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ICreateUserImage, CreateUserImage>()
+                              .AddScoped<IGetUserImage, GetUserImage>()
+                              .AddScoped<IUpdateUserImage, UpdateUserImage>();
         }
     }
 }
