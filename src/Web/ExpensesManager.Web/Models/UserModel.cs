@@ -10,6 +10,6 @@
 
         public long? UserId { get; set; }
 
-        public bool hasChangeUser { get; set; } = false;
+        public bool HasChangeUser { get; set; } = false;
     }
 }

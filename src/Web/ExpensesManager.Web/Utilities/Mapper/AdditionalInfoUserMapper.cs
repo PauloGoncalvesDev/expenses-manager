@@ -49,7 +49,7 @@ namespace ExpensesManager.Web.Utilities.Mapper
             if (hasChanges)
             {
                 additionalInfoUser.UpdateDate = DateTime.Now;
-                additionalInfoUserModel.hasChange = true;
+                additionalInfoUserModel.HasChange = true;
             }
 
             return additionalInfoUser;

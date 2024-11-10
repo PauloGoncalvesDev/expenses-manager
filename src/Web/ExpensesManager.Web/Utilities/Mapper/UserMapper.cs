@@ -48,7 +48,7 @@ namespace ExpensesManager.Web.Utilities.Mapper
             if (hasChanges)
             {
                 user.UpdateDate = DateTime.Now;
-                additionalInfoUserModel.hasChangeUser = true;
+                additionalInfoUserModel.HasChangeUser = true;
             }
 
             return user;

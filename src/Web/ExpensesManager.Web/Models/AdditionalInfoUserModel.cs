@@ -14,6 +14,8 @@ namespace ExpensesManager.Web.Models
 
         public string Occupation { get; set; }
 
-        public bool hasChange { get; set; } = false;
+        public bool HasChange { get; set; } = false;
+
+        public string ProfileImage { get; set; }
     }
 }
