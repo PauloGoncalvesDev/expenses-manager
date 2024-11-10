@@ -1,6 +1,7 @@
-﻿using ExpensesManager.Application.BusinessRules.AdditionalInfoUserBusinessRule.cs;
-using ExpensesManager.Application.BusinessRules.Interfaces.AdditionalInfoUser;
+﻿using ExpensesManager.Application.BusinessRules.Interfaces.AdditionalInfoUser;
 using ExpensesManager.Application.BusinessRules.Interfaces.User;
+using ExpensesManager.Application.BusinessRules.Interfaces.UserImage;
+using ExpensesManager.Application.Services.Images;
 using ExpensesManager.Application.Services.LoggedUser;
 using ExpensesManager.Application.Validators;
 using ExpensesManager.Domain.Entities;
@@ -49,6 +50,37 @@ namespace ExpensesManager.Web.Controllers
             }
         }
 
+        public async Task<IActionResult> UploadUserPicture([FromForm] AdditionalInfoUserModel additionalInfoUserModel, [FromServices] ICreateUserImage createUserImage, [FromServices] IUpdateUserImage updateUserImage, [FromServices] ImageService imageService)
+        {
+            try
+            {
+                UserImage existingUserImage = await updateUserImage.Execute(additionalInfoUserModel.UserId.Value);
+                
+                if (existingUserImage != null)
+                    await updateUserImage.Update(imageService.DeleteProfileImage(existingUserImage));
+
+                UserImage userImage = imageService.SaveProfileImage(additionalInfoUserModel.ProfileImage, additionalInfoUserModel.UserId.Value);
+
+                await createUserImage.Execute(userImage);
+
+                TempData["SuccessMessage"] = RESPONSEMSG.IMAGE_SUCCESS;
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                if (ex is ValidationException)
+                {
+                    ValidationException validationsError = ex as ValidationException;
+                    TempData["ErrorMessage"] = validationsError.ErrorMessage;
+
+                    return RedirectToAction("Index");
+                }
+
+                TempData["ErrorMessage"] = RESPONSEMSG.IMAGE_ERROR;
+                return RedirectToAction("Index");
+            }
+        }
+
         private static async Task UpdateUser([FromForm] AdditionalInfoUserModel additionalInfoUserModel, [FromServices] IUpdateUser updateUser)
         {
             User user = await updateUser.Execute(additionalInfoUserModel.UserId.Value);
@@ -57,7 +89,7 @@ namespace ExpensesManager.Web.Controllers
 
             UserValidator.ValidateToUpdate(user);
 
-            if (additionalInfoUserModel.hasChangeUser)
+            if (additionalInfoUserModel.HasChangeUser)
                 await updateUser.Update(user);
         }
 
@@ -79,7 +111,7 @@ namespace ExpensesManager.Web.Controllers
 
                 AdditionalInfoUserValidator.Validate(additionalInfoUser);
 
-                if (additionalInfoUserModel.hasChange)
+                if (additionalInfoUserModel.HasChange)
                     await updateAdditionalInfoUser.Update(additionalInfoUser);
             }
         }

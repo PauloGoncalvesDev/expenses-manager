@@ -138,6 +138,12 @@
   <data name="EXISTING_USER" xml:space="preserve">
     <value>Senha ou e-mail incorretos.</value>
   </data>
+  <data name="IMAGE_ERROR" xml:space="preserve">
+    <value>Não foi possível salvar a foto de perfil</value>
+  </data>
+  <data name="INVALID_IMAGE_FORMAT" xml:space="preserve">
+    <value>Foto de perfil com formato inválido</value>
+  </data>
   <data name="INVALID_MAIL" xml:space="preserve">
     <value>E-mail inválido</value>
   </data>

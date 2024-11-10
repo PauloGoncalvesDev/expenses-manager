@@ -120,6 +120,12 @@
   <data name="ADDITIONALINFO_SUCCESS" xml:space="preserve">
     <value>Informações salvas com sucesso</value>
   </data>
+  <data name="IMAGE_ERROR" xml:space="preserve">
+    <value>Não foi possível salvar a foto de perfil</value>
+  </data>
+  <data name="IMAGE_SUCCESS" xml:space="preserve">
+    <value>Foto de perfil adicionada com sucesso</value>
+  </data>
   <data name="TRANSACTION_SUCCESS" xml:space="preserve">
     <value>Movimentação registrada com sucesso</value>
   </data>

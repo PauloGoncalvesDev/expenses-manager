@@ -124,6 +124,24 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível salvar a foto de perfil.
+        /// </summary>
+        public static string IMAGE_ERROR {
+            get {
+                return ResourceManager.GetString("IMAGE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foto de perfil com formato inválido.
+        /// </summary>
+        public static string INVALID_IMAGE_FORMAT {
+            get {
+                return ResourceManager.GetString("INVALID_IMAGE_FORMAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail inválido.
         /// </summary>
         public static string INVALID_MAIL {

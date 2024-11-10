@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\Shared\ExpensesManager.Exceptions\ExpensesManager.Exceptions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

@@ -70,6 +70,24 @@ namespace ExpensesManager.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Não foi possível salvar a foto de perfil.
+        /// </summary>
+        public static string IMAGE_ERROR {
+            get {
+                return ResourceManager.GetString("IMAGE_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foto de perfil adicionada com sucesso.
+        /// </summary>
+        public static string IMAGE_SUCCESS {
+            get {
+                return ResourceManager.GetString("IMAGE_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Movimentação registrada com sucesso.
         /// </summary>
         public static string TRANSACTION_SUCCESS {
