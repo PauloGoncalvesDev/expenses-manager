@@ -17,9 +17,9 @@ namespace ExpensesManager.Web.Controllers
     [ServiceFilter(typeof(AuthorizationFilter))]
     public class UserController : Controller
     {
-        public async Task<IActionResult> Index([FromServices] ILoggedUser loggedUser, [FromServices] IUpdateAdditionalInfoUser updateAdditionalInfoUser)
+        public async Task<IActionResult> Index([FromServices] ILoggedUser loggedUser, [FromServices] IUpdateAdditionalInfoUser updateAdditionalInfoUser, [FromServices] IGetUserImage getUserImage)
         {
-            AdditionalInfoUserModel additionalInfoUserModel = await GetAdditionalInfoUserModel(loggedUser, updateAdditionalInfoUser);
+            AdditionalInfoUserModel additionalInfoUserModel = await GetAdditionalInfoUserModel(loggedUser, updateAdditionalInfoUser, getUserImage);
 
             return View(additionalInfoUserModel);
         }
@@ -54,12 +54,12 @@ namespace ExpensesManager.Web.Controllers
         {
             try
             {
-                UserImage existingUserImage = await updateUserImage.Execute(additionalInfoUserModel.UserId.Value);
-                
-                if (existingUserImage != null)
-                    await updateUserImage.Update(imageService.DeleteProfileImage(existingUserImage));
+                UserImage existingUserImage = await updateUserImage.Execute(additionalInfoUserModel.UserId.Value);              
 
                 UserImage userImage = imageService.SaveProfileImage(additionalInfoUserModel.ProfileImage, additionalInfoUserModel.UserId.Value);
+
+                if (existingUserImage != null)
+                    await updateUserImage.Update(imageService.DeleteProfileImage(existingUserImage));
 
                 await createUserImage.Execute(userImage);
 
@@ -116,13 +116,15 @@ namespace ExpensesManager.Web.Controllers
             }
         }
 
-        private static async Task<AdditionalInfoUserModel> GetAdditionalInfoUserModel([FromServices] ILoggedUser loggedUser, [FromServices] IUpdateAdditionalInfoUser updateAdditionalInfoUser)
+        private static async Task<AdditionalInfoUserModel> GetAdditionalInfoUserModel([FromServices] ILoggedUser loggedUser, [FromServices] IUpdateAdditionalInfoUser updateAdditionalInfoUser, [FromServices] IGetUserImage getUserImage)
         {
             User user = await loggedUser.GetLoggedUser();
 
             AdditionalInfoUser additionalInfoUser = await updateAdditionalInfoUser.Execute(user.Id);
 
-            return new AdditionalInfoUserMapper().Map(additionalInfoUser, user);
+            UserImage userImage = await getUserImage.Execute(user.Id);
+
+            return new AdditionalInfoUserMapper().Map(additionalInfoUser, userImage, user);
         }
     }
 }

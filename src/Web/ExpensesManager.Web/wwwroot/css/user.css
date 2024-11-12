@@ -1,12 +1,12 @@
-﻿.img-thumbnail {
-    width: 250px; 
-    height: 250px; 
-    object-fit: cover; 
+﻿.img-userprofile {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
 @media (max-width: 576px) {
-    .img-thumbnail {
+    .img-userprofile {
         width: 200px;
         height: 200px;
     }

@@ -1,0 +1,4 @@
+﻿<img src="@(string.IsNullOrEmpty(Model)
+    ? Url.Content("~/img/user_profile.png")
+    : $"{Model}")"
+     class="rounded-circle" alt="Imagem do perfil" width="40" height="40" style="object-fit: cover" />

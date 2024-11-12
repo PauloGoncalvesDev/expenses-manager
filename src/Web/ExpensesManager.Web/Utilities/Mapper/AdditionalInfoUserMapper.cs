@@ -6,19 +6,27 @@ namespace ExpensesManager.Web.Utilities.Mapper
 {
     public class AdditionalInfoUserMapper : IMapper<AdditionalInfoUserModel, AdditionalInfoUser>
     {
-        public AdditionalInfoUserModel Map(AdditionalInfoUser additionalInfoUser, User user)
+        public AdditionalInfoUserModel Map(AdditionalInfoUser additionalInfoUser, UserImage userImage, User user)
         {
-            return new AdditionalInfoUserModel
+            AdditionalInfoUserModel additionalInfoUserModel = new AdditionalInfoUserModel();
+
+            additionalInfoUserModel.BirthDate = additionalInfoUser?.BirthDate;
+            additionalInfoUserModel.Gender = additionalInfoUser?.Gender;
+            additionalInfoUserModel.Mail = user.Mail;
+            additionalInfoUserModel.Name = user.Name;
+            additionalInfoUserModel.Nationality = additionalInfoUser?.Nationality;
+            additionalInfoUserModel.Occupation = additionalInfoUser?.Occupation;
+            additionalInfoUserModel.Phone = additionalInfoUser?.Phone;
+            additionalInfoUserModel.UserId = user.Id;
+
+            if (userImage != null && !string.IsNullOrEmpty(userImage.ImageUrl) && File.Exists(userImage.ImageUrl))
             {
-                BirthDate = additionalInfoUser?.BirthDate,
-                Gender = additionalInfoUser?.Gender,
-                Mail = user.Mail,
-                Name = user.Name,
-                Nationality = additionalInfoUser?.Nationality,
-                Occupation = additionalInfoUser?.Occupation,
-                Phone = additionalInfoUser?.Phone,
-                UserId = user.Id
-            };
+                byte[] imageBytes = File.ReadAllBytes(userImage.ImageUrl);
+
+                additionalInfoUserModel.ProfileImage = $"data:{userImage.ContentType};base64,{Convert.ToBase64String(imageBytes)}";
+            }
+
+            return additionalInfoUserModel;
         }
 
         public AdditionalInfoUser Map(AdditionalInfoUser additionalInfoUser, AdditionalInfoUserModel additionalInfoUserModel)

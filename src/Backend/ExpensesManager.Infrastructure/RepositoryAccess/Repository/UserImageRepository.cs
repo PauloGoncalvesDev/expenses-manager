@@ -20,7 +20,7 @@ namespace ExpensesManager.Infrastructure.RepositoryAccess.Repository
 
         public async Task<UserImage> GetUserImageByUserId(long userId)
         {
-            return await _context.UserImage.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userId);
+            return await _context.UserImage.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userId && x.DeletionDate == null);
         }
 
         public async Task<UserImage> GetUserImageByUserIdToUpdate(long userId)

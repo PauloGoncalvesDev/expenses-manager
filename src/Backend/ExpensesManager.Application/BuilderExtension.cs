@@ -50,7 +50,13 @@ namespace ExpensesManager.Application
         {
             string imagePath = configuration.GetRequiredSection("Configuration:ProfileImagePath").Value;
 
-            serviceDescriptors.AddScoped(options => new ImageService(imagePath));
+            serviceDescriptors.AddScoped<ImageService>(options =>
+            {
+                var loggedUser = options.GetRequiredService<ILoggedUser>();
+                var getUserImage = options.GetRequiredService<IGetUserImage>();
+
+                return new ImageService(imagePath, getUserImage, loggedUser);
+            });
         }
 
         private static void AddApplicationBusinessRule(IServiceCollection serviceDescriptors)
