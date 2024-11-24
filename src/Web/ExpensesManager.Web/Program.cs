@@ -2,6 +2,7 @@ using ExpensesManager.Application;
 using ExpensesManager.Domain.Extension;
 using ExpensesManager.Infrastructure;
 using ExpensesManager.Infrastructure.Migrations;
+using ExpensesManager.Events;
 using ExpensesManager.Web.Filters;
 using ExpensesManager.Web.Utilities.ViewComponents;
 
@@ -13,6 +14,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddRabbitMQ(builder.Configuration);
 builder.Services.AddScoped<AuthorizationFilter>();
 builder.Services.AddScoped<UserProfileImageViewComponent>();
 

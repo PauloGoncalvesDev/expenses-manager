@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{59AE5328-C90
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{11050AB4-2D60-4576-9F22-F9644EEEE3E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Web", "src\Web\ExpensesManager.Web\ExpensesManager.Web.csproj", "{8D0A079D-5452-45C2-BD57-F400F722502E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpensesManager.Web", "src\Web\ExpensesManager.Web\ExpensesManager.Web.csproj", "{8D0A079D-5452-45C2-BD57-F400F722502E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Application", "src\Backend\ExpensesManager.Application\ExpensesManager.Application.csproj", "{3A8CE69C-6E2B-465C-B7F0-B59F6464D40C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpensesManager.Application", "src\Backend\ExpensesManager.Application\ExpensesManager.Application.csproj", "{3A8CE69C-6E2B-465C-B7F0-B59F6464D40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Domain", "src\Backend\ExpensesManager.Domain\ExpensesManager.Domain.csproj", "{C4A4F6AA-DE70-49B2-867D-BC5D8A921B0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpensesManager.Domain", "src\Backend\ExpensesManager.Domain\ExpensesManager.Domain.csproj", "{C4A4F6AA-DE70-49B2-867D-BC5D8A921B0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Infrastructure", "src\Backend\ExpensesManager.Infrastructure\ExpensesManager.Infrastructure.csproj", "{6723D5AC-CA20-45C2-A15F-6EEEEA210D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpensesManager.Infrastructure", "src\Backend\ExpensesManager.Infrastructure\ExpensesManager.Infrastructure.csproj", "{6723D5AC-CA20-45C2-A15F-6EEEEA210D86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Exceptions", "src\Shared\ExpensesManager.Exceptions\ExpensesManager.Exceptions.csproj", "{6E1A500A-3B6C-412D-82E6-07C8F816A5B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpensesManager.Exceptions", "src\Shared\ExpensesManager.Exceptions\ExpensesManager.Exceptions.csproj", "{6E1A500A-3B6C-412D-82E6-07C8F816A5B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesManager.Events", "src\Backend\ExpensesManager.Events\ExpensesManager.Events.csproj", "{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{6E1A500A-3B6C-412D-82E6-07C8F816A5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E1A500A-3B6C-412D-82E6-07C8F816A5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E1A500A-3B6C-412D-82E6-07C8F816A5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{C4A4F6AA-DE70-49B2-867D-BC5D8A921B0E} = {E61D720A-C405-4825-B2D5-9C7359CA5C40}
 		{6723D5AC-CA20-45C2-A15F-6EEEEA210D86} = {E61D720A-C405-4825-B2D5-9C7359CA5C40}
 		{6E1A500A-3B6C-412D-82E6-07C8F816A5B2} = {11050AB4-2D60-4576-9F22-F9644EEEE3E7}
+		{AE0D89EC-6EFE-4BFB-86D4-BF65CFC98CCB} = {E61D720A-C405-4825-B2D5-9C7359CA5C40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE6DCFAB-3C20-4AB6-ACC8-825D908C270F}

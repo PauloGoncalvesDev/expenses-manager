@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Backend\ExpensesManager.Application\ExpensesManager.Application.csproj" />
     <ProjectReference Include="..\..\Backend\ExpensesManager.Domain\ExpensesManager.Domain.csproj" />
+    <ProjectReference Include="..\..\Backend\ExpensesManager.Events\ExpensesManager.Events.csproj" />
     <ProjectReference Include="..\..\Backend\ExpensesManager.Infrastructure\ExpensesManager.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\ExpensesManager.Exceptions\ExpensesManager.Exceptions.csproj" />
   </ItemGroup>
