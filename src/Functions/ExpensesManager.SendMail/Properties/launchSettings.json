@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ExpensesManager.SendMail": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7216",
+      "launchBrowser": false
+    }
+  }
+}
