@@ -4,7 +4,7 @@ using ExpensesManager.Events.Publishers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ExpensesManager.Events
+namespace ExpensesManager.Events.Modules
 {
     public static class EventsModule
     {

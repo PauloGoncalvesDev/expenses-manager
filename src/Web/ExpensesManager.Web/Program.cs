@@ -2,7 +2,7 @@ using ExpensesManager.Application;
 using ExpensesManager.Domain.Extension;
 using ExpensesManager.Infrastructure;
 using ExpensesManager.Infrastructure.Migrations;
-using ExpensesManager.Events;
+using ExpensesManager.Events.Modules;
 using ExpensesManager.Web.Filters;
 using ExpensesManager.Web.Utilities.ViewComponents;
 
