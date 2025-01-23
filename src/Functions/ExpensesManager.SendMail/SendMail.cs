@@ -19,7 +19,7 @@ namespace ExpensesManager.SendMail
         }
 
         [Function("SendMail")]
-        public void Run([RabbitMQTrigger("expensesmanager.sendmailservice.queue", ConnectionStringSetting = "RabbitMQConnectionURL")] string payload)
+        public void Run([RabbitMQTrigger("expensesmanager.sendmail.queue", ConnectionStringSetting = "RabbitMQConnectionURL")] string payload)
         {
             try
             {

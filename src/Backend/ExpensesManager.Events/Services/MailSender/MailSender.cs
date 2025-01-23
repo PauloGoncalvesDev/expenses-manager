@@ -54,7 +54,7 @@ namespace ExpensesManager.Events.Services.MailSender
 
                 switch (property.Name)
                 {
-                    case "Mail":
+                    case "MailTo":
                         _mailTo = propertyValue;
                         break;
 
