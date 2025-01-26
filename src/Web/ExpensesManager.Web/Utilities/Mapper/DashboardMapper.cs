@@ -9,12 +9,16 @@ namespace ExpensesManager.Web.Utilities.Mapper
         {
             List<TransactionModel> incomeTransactionModel = new List<TransactionModel>();
             List<TransactionModel> expenseTransactionModel = new List<TransactionModel>();
+            List<Transaction> allTransactions = new List<Transaction>();
 
             foreach (Transaction transaction in incomeTransactions)
                 incomeTransactionModel.Add(new TransactionMapper().Map(transaction));
 
             foreach (Transaction transaction in expenseTransactions)
                 expenseTransactionModel.Add(new TransactionMapper().Map(transaction));
+
+            allTransactions.AddRange(incomeTransactions);
+            allTransactions.AddRange(expenseTransactions);
 
             decimal incomesAmount = incomeTransactionModel.Sum(s => s.Amount);
             decimal expensesAmount = expenseTransactionModel.Sum(s => s.Amount);
@@ -28,7 +32,8 @@ namespace ExpensesManager.Web.Utilities.Mapper
                 ExpensesAmount = Utilities.FormatAmount(expensesAmount),
                 TotalAmount = Utilities.FormatAmount(totalAmount),
                 DoughnutExpenseData = DoughnutMapper.CreateDoughnutExpenseModel(expenseTransactions),
-                DoughnutIncomeData = DoughnutMapper.CreateDoughnutIncomeModel(incomeTransactions)
+                DoughnutIncomeData = DoughnutMapper.CreateDoughnutIncomeModel(incomeTransactions),
+                DoughnutAllTransactionsData = DoughnutMapper.CreateDoughnutAllTransactions(allTransactions),
             };
         }
     }

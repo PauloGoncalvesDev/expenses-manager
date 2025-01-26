@@ -29,5 +29,17 @@ namespace ExpensesManager.Web.Utilities.Mapper
                                 FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
                             }).ToList();
         }
+
+        public static List<DoughnutAllTransactionsModel> CreateDoughnutAllTransactions(List<Transaction> transactions)
+        {
+            return transactions
+                            .GroupBy(g => g.Type)
+                            .Select(k => new DoughnutAllTransactionsModel
+                            {
+                                Title = EnumExtensions.GetDisplayName(k.First().Type),
+                                Amount = k.Sum(s => s.Amount),
+                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
+                            }).ToList();
+        }
     }
 }

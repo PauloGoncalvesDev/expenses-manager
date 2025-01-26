@@ -16,6 +16,7 @@ function loadCharts() {
     function onSuccessResult(data) {
         loadIncomeChart(data);
         loadExpenseChart(data);
+        loadAllTransactionsChart(data);
     }
 
     function onError(err) {
@@ -41,13 +42,22 @@ function loadExpenseChart(data) {
     loadChart(doughnutExpenseChart, chartLabel, chartData, barColors);
 }
 
+function loadAllTransactionsChart(data) {
+    const doughnutAllTransactionsChart = document.getElementById('doughnutAllTransactionsChart');
+    let chartLabel = data.dashboardModel.doughnutAllTransactionsData.map(x => x.title);
+    let chartData = data.dashboardModel.doughnutAllTransactionsData.map(x => x.amount);
+    let barColors = chartLabel.map(() => getRandomColor());
+
+    loadChart(doughnutAllTransactionsChart, chartLabel, chartData, barColors);
+}
+
 function loadChart(chart, chartLabel, chartData, barColors) {
     new Chart(chart, {
         type: 'doughnut',
         data: {
             labels: chartLabel,
             datasets: [{
-                label: 'Valor em R$',
+                label: ' Valor em R$',
                 data: chartData,
                 backgroundColor: barColors,
                 hoverOffset: 10

@@ -17,5 +17,7 @@ namespace ExpensesManager.Web.Models
         public List<DoughnutExpenseModel> DoughnutExpenseData { get; set; }
 
         public List<DoughnutIncomeModel> DoughnutIncomeData { get; set; }
+
+        public List<DoughnutAllTransactionsModel> DoughnutAllTransactionsData { get; set; }
     }
 }
