@@ -1,4 +1,4 @@
-﻿using ExpensesManager.Web.Models.Doughnut;
+﻿using ExpensesManager.Web.Models.Charts;
 
 namespace ExpensesManager.Web.Models
 {
@@ -14,10 +14,12 @@ namespace ExpensesManager.Web.Models
 
         public string TotalAmount { get; set; }
 
-        public List<DoughnutExpenseModel> DoughnutExpenseData { get; set; }
+        public List<ChartExpenseModel> DoughnutExpenseData { get; set; }
 
-        public List<DoughnutIncomeModel> DoughnutIncomeData { get; set; }
+        public List<ChartIncomeModel> DoughnutIncomeData { get; set; }
 
-        public List<DoughnutAllTransactionsModel> DoughnutAllTransactionsData { get; set; }
+        public List<ChartAllTransactionsModel> DoughnutAllTransactionsData { get; set; }
+
+        public LineChartCategoryTypeModel LineChartCategoryTypeData { get; set; }
     }
 }

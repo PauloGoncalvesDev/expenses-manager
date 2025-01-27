@@ -24,17 +24,18 @@ namespace ExpensesManager.Web.Utilities.Mapper
             decimal expensesAmount = expenseTransactionModel.Sum(s => s.Amount);
             decimal totalAmount = incomesAmount - expensesAmount;
 
-            return new DashboardModel
-            {
-                Incomes = incomeTransactionModel,
-                IncomesAmount = Utilities.FormatAmount(incomesAmount),
-                Expenses = expenseTransactionModel,
-                ExpensesAmount = Utilities.FormatAmount(expensesAmount),
-                TotalAmount = Utilities.FormatAmount(totalAmount),
-                DoughnutExpenseData = DoughnutMapper.CreateDoughnutExpenseModel(expenseTransactions),
-                DoughnutIncomeData = DoughnutMapper.CreateDoughnutIncomeModel(incomeTransactions),
-                DoughnutAllTransactionsData = DoughnutMapper.CreateDoughnutAllTransactions(allTransactions),
-            };
+            DashboardModel dashboardModel = new DashboardModel();
+
+            dashboardModel.Incomes = incomeTransactionModel;
+            dashboardModel.IncomesAmount = Utilities.FormatAmount(incomesAmount);
+            dashboardModel.Expenses = expenseTransactionModel;
+            dashboardModel.ExpensesAmount = Utilities.FormatAmount(expensesAmount);
+            dashboardModel.TotalAmount = Utilities.FormatAmount(totalAmount);
+            dashboardModel.DoughnutExpenseData = ChartMapper.CreateDoughnutExpenseModel(expenseTransactions);
+            dashboardModel.DoughnutIncomeData = ChartMapper.CreateDoughnutIncomeModel(incomeTransactions);
+            dashboardModel.DoughnutAllTransactionsData = ChartMapper.CreateDoughnutAllTransactions(allTransactions);
+
+            return dashboardModel;
         }
     }
 }

@@ -1,40 +1,42 @@
 ﻿using ExpensesManager.Domain.Entities;
-using ExpensesManager.Web.Models.Doughnut;
+using ExpensesManager.Web.Models.Charts;
 using ExpensesManager.Web.Utilities.Extension;
 
 namespace ExpensesManager.Web.Utilities.Mapper
 {
-    public static class DoughnutMapper
+    public static class ChartMapper
     {
-        public static List<DoughnutExpenseModel> CreateDoughnutExpenseModel(List<Transaction> transactions)
+        public static List<ChartExpenseModel> CreateDoughnutExpenseModel(List<Transaction> transactions)
         {
             return transactions
                             .GroupBy(g => g.Type)
-                            .Select(k => new DoughnutExpenseModel
+                            .Select(k => new ChartExpenseModel
                             {
                                 Title = EnumExtensions.GetDisplayName(k.First().Type),
                                 Amount = k.Sum(s => s.Amount),
-                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
+                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount)),
+                                TransactionDate = k.First().TransactionDate
                             }).ToList();
         }
 
-        public static List<DoughnutIncomeModel> CreateDoughnutIncomeModel(List<Transaction> transactions)
+        public static List<ChartIncomeModel> CreateDoughnutIncomeModel(List<Transaction> transactions)
         {
             return transactions
                             .GroupBy(g => g.Type)
-                            .Select(k => new DoughnutIncomeModel
+                            .Select(k => new ChartIncomeModel
                             {
                                 Title = EnumExtensions.GetDisplayName(k.First().Type),
                                 Amount = k.Sum(s => s.Amount),
-                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
+                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount)),
+                                TransactionDate = k.First().TransactionDate
                             }).ToList();
         }
 
-        public static List<DoughnutAllTransactionsModel> CreateDoughnutAllTransactions(List<Transaction> transactions)
+        public static List<ChartAllTransactionsModel> CreateDoughnutAllTransactions(List<Transaction> transactions)
         {
             return transactions
                             .GroupBy(g => g.Type)
-                            .Select(k => new DoughnutAllTransactionsModel
+                            .Select(k => new ChartAllTransactionsModel
                             {
                                 Title = EnumExtensions.GetDisplayName(k.First().Type),
                                 Amount = k.Sum(s => s.Amount),

@@ -1,11 +1,13 @@
-﻿namespace ExpensesManager.Web.Models.Doughnut
+﻿namespace ExpensesManager.Web.Models.Charts
 {
-    public class DoughnutModel
+    public class ChartModel
     {
         public string Title { get; set; }
 
         public decimal Amount { get; set; }
 
         public string FormatedAmount { get; set; }
+
+        public DateTime TransactionDate { get; set; }
     }
 }
