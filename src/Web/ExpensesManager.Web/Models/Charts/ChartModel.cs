@@ -8,6 +8,8 @@
 
         public string FormatedAmount { get; set; }
 
-        public DateTime TransactionDate { get; set; }
+        public int YearTransaction { get; set; }
+
+        public int MonthTransaction { get; set; }
     }
 }

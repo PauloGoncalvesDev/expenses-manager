@@ -1,6 +1,7 @@
 ﻿using ExpensesManager.Domain.Entities;
 using ExpensesManager.Web.Models.Charts;
 using ExpensesManager.Web.Utilities.Extension;
+using System.Globalization;
 
 namespace ExpensesManager.Web.Utilities.Mapper
 {
@@ -14,8 +15,7 @@ namespace ExpensesManager.Web.Utilities.Mapper
                             {
                                 Title = EnumExtensions.GetDisplayName(k.First().Type),
                                 Amount = k.Sum(s => s.Amount),
-                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount)),
-                                TransactionDate = k.First().TransactionDate
+                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
                             }).ToList();
         }
 
@@ -27,8 +27,7 @@ namespace ExpensesManager.Web.Utilities.Mapper
                             {
                                 Title = EnumExtensions.GetDisplayName(k.First().Type),
                                 Amount = k.Sum(s => s.Amount),
-                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount)),
-                                TransactionDate = k.First().TransactionDate
+                                FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
                             }).ToList();
         }
 
@@ -42,6 +41,43 @@ namespace ExpensesManager.Web.Utilities.Mapper
                                 Amount = k.Sum(s => s.Amount),
                                 FormatedAmount = Utilities.FormatAmount(k.Sum(s => s.Amount))
                             }).ToList();
+        }
+
+        public static LineChartCategoryTypeModel CreateLineChartCategoryType(List<Transaction> expenseTransactions, List<Transaction> incomeTransactions)
+        {
+            List<ChartExpenseModel> expenseData =
+                expenseTransactions.GroupBy(m => new { m.TransactionDate.Month, m.TransactionDate.Year })
+                .Select(k => new ChartExpenseModel
+                {
+                    Title = k.First().TransactionDate.ToString("MMMM", new CultureInfo("pt-BR")),
+                    YearTransaction = k.First().TransactionDate.Year,
+                    MonthTransaction = k.First().TransactionDate.Month,
+                    Amount = k.Sum(s => s.Amount)
+                })
+                .OrderBy(k => k.YearTransaction)
+                .ThenBy(k => k.MonthTransaction)
+                .ToList();
+
+
+            List<ChartIncomeModel> incomeData =
+                incomeTransactions.GroupBy(m => new { m.TransactionDate.Month, m.TransactionDate.Year })
+                .Select(k => new ChartIncomeModel
+                {
+                    Title = k.First().TransactionDate.ToString("MMMM", new CultureInfo("pt-BR")),
+                    YearTransaction = k.First().TransactionDate.Year,
+                    MonthTransaction = k.First().TransactionDate.Month,
+                    Amount = k.Sum(s => s.Amount)
+                })
+                .OrderBy(k => k.YearTransaction)
+                .ThenBy(k => k.MonthTransaction)
+                .ToList();
+
+
+            return new LineChartCategoryTypeModel
+            {
+                ExpenseData = expenseData,
+                IncomeData = incomeData
+            };
         }
     }
 }

@@ -34,6 +34,7 @@ namespace ExpensesManager.Web.Utilities.Mapper
             dashboardModel.DoughnutExpenseData = ChartMapper.CreateDoughnutExpenseModel(expenseTransactions);
             dashboardModel.DoughnutIncomeData = ChartMapper.CreateDoughnutIncomeModel(incomeTransactions);
             dashboardModel.DoughnutAllTransactionsData = ChartMapper.CreateDoughnutAllTransactions(allTransactions);
+            dashboardModel.LineChartCategoryTypeData = ChartMapper.CreateLineChartCategoryType(expenseTransactions, incomeTransactions);
 
             return dashboardModel;
         }

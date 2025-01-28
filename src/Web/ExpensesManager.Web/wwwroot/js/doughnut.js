@@ -17,6 +17,7 @@ function loadCharts() {
         loadIncomeChart(data);
         loadExpenseChart(data);
         loadAllTransactionsChart(data);
+        loadIncomeAndExpenseLineChart(data);
     }
 
     function onError(err) {
@@ -30,7 +31,7 @@ function loadIncomeChart(data) {
     let chartData = data.dashboardModel.doughnutIncomeData.map(x => x.amount);
     let barColors = chartLabel.map(() => getRandomColor());
 
-    loadChart(doughnutIncomeChart, chartLabel, chartData, barColors);
+    loadDoughnutChart(doughnutIncomeChart, chartLabel, chartData, barColors);
 }
 
 function loadExpenseChart(data) {
@@ -39,7 +40,7 @@ function loadExpenseChart(data) {
     let chartData = data.dashboardModel.doughnutExpenseData.map(x => x.amount);
     let barColors = chartLabel.map(() => getRandomColor());
 
-    loadChart(doughnutExpenseChart, chartLabel, chartData, barColors);
+    loadDoughnutChart(doughnutExpenseChart, chartLabel, chartData, barColors);
 }
 
 function loadAllTransactionsChart(data) {
@@ -48,10 +49,45 @@ function loadAllTransactionsChart(data) {
     let chartData = data.dashboardModel.doughnutAllTransactionsData.map(x => x.amount);
     let barColors = chartLabel.map(() => getRandomColor());
 
-    loadChart(doughnutAllTransactionsChart, chartLabel, chartData, barColors);
+    loadDoughnutChart(doughnutAllTransactionsChart, chartLabel, chartData, barColors);
 }
 
-function loadChart(chart, chartLabel, chartData, barColors) {
+function loadIncomeAndExpenseLineChart(data) {
+    const doughnutLineChart = document.getElementById('doughnutLineChart');
+
+    let combinedData = [...data.dashboardModel.lineChartCategoryTypeData.incomeData, ...data.dashboardModel.lineChartCategoryTypeData.expenseData];
+
+    let sortedData = combinedData.sort((a, b) => {
+        if (a.yearTransaction === b.yearTransaction) {
+            return a.monthTransaction - b.monthTransaction;
+        }
+        return a.yearTransaction - b.yearTransaction;
+    });
+
+    let labels = [...new Set(
+        sortedData.map(
+            (item) => `${item.title.substring(0, 3).toUpperCase()} ${item.yearTransaction}`
+        )
+    )];
+
+    let incomeAmount = labels.map(label => {
+        const match = data.dashboardModel.lineChartCategoryTypeData.incomeData.find(
+            item => `${item.title.substring(0, 3).toUpperCase()} ${item.yearTransaction}` === label
+        );
+        return match ? match.amount : 0;
+    });
+
+    let expenseAmount = labels.map(label => {
+        const match = data.dashboardModel.lineChartCategoryTypeData.expenseData.find(
+            item => `${item.title.substring(0, 3).toUpperCase()} ${item.yearTransaction}` === label
+        );
+        return match ? match.amount : 0;
+    });
+
+    loadLineChart(doughnutLineChart, incomeAmount, expenseAmount, labels);
+}
+
+function loadDoughnutChart(chart, chartLabel, chartData, barColors) {
     new Chart(chart, {
         type: 'doughnut',
         data: {
@@ -64,6 +100,75 @@ function loadChart(chart, chartLabel, chartData, barColors) {
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                tooltip: {
+                    bodyFont: {
+                        size: 14
+                    },
+                    titleFont: {
+                        size: 16
+                    }
+                }
+            }
+        }
+    });
+}
+
+function loadLineChart(chart, incomeAmount, expenseAmount, transactionsDate) {
+    new Chart(chart, {
+        type: 'line',
+        data: {
+            labels: [...transactionsDate],
+            datasets: [
+                {
+                    label: ' Receitas',
+                    data: incomeAmount,
+                    borderColor: 'green',
+                    backgroundColor: 'green',
+                    tension: 0.1
+                },
+                {
+                    label: ' Despesas',
+                    data: expenseAmount,
+                    borderColor: 'red',
+                    backgroundColor: 'red',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    ticks: {
+                        color: 'white',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.08)',
+                    },
+                    ticks: {
+                        color: 'white',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            },
             plugins: {
                 legend: {
                     labels: {
