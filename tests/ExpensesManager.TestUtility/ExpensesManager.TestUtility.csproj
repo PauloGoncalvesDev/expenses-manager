@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Backend\ExpensesManager.Application\ExpensesManager.Application.csproj" />
+    <ProjectReference Include="..\..\src\Backend\ExpensesManager.Domain\ExpensesManager.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

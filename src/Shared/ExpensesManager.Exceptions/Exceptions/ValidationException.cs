@@ -4,6 +4,6 @@
     {
         public string ErrorMessage { get; set; }
 
-        public ValidationException(string errorMessage) => ErrorMessage = errorMessage;
+        public ValidationException(string errorMessage) : base(errorMessage) => ErrorMessage = errorMessage;
     }
 }
