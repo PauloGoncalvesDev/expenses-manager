@@ -1,0 +1,36 @@
+name: CI/CD - Main - ExpensesManager_Functions
+
+on:
+    pull_request:
+        branches:
+            - main
+
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Configuring .NET
+              uses: actions/setup-dotnet@v3
+              with:
+                dotnet-version: 7.0.x
+
+            - name: Restore Packages
+              run: dotnet restore ExpensesManager_Functions.sln
+
+            - name: Compile Project
+              run: dotnet build ExpensesManager_Functions.sln --configuration Release --no-restore
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish
+              run: echo "ExpensesManager_Functions, Deploy bem-sucedido!"
