@@ -32,7 +32,7 @@ jobs:
               run: dotnet test ExpensesManager.sln --configuration Release --no-restore --verbosity normal
 
     deploy:
-        needs: build
+        needs: build-and-test
         runs-on: ubuntu-latest
         steps:
             - name: Publish
