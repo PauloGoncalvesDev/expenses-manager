@@ -87,11 +87,67 @@ namespace ExpensesManager.Validators.Test.UserTests
         }
 
         [Fact]
-        public void Validate_CreateUser_Should_Throw_Exception_When_Password_Is_Invalid()
+        public void Validate_CreateUser_Should_Throw_Exception_When_Password_Length_Invalid()
         {
             (User user, _) = UserBuilder.GenerateUser();
 
             user.Password = "123";
+
+            Action action = () => UserValidator.Validate(user);
+
+            action.Should()
+                .Throw<ValidationException>()
+                .WithMessage(VALIDATIONMSG.EXISTING_USER);
+        }
+
+        [Fact]
+        public void Validate_CreateUser_Should_Throw_Exception_When_Password_UpperCase_Invalid()
+        {
+            (User user, _) = UserBuilder.GenerateUser();
+
+            user.Password = "teste.paulo.123";
+
+            Action action = () => UserValidator.Validate(user);
+
+            action.Should()
+                .Throw<ValidationException>()
+                .WithMessage(VALIDATIONMSG.EXISTING_USER);
+        }
+
+        [Fact]
+        public void Validate_CreateUser_Should_Throw_Exception_When_Password_LowerCase_Invalid()
+        {
+            (User user, _) = UserBuilder.GenerateUser();
+
+            user.Password = "TESTE.PAULO.123";
+
+            Action action = () => UserValidator.Validate(user);
+
+            action.Should()
+                .Throw<ValidationException>()
+                .WithMessage(VALIDATIONMSG.EXISTING_USER);
+        }
+
+        [Fact]
+        public void Validate_CreateUser_Should_Throw_Exception_When_Password_Digit_Invalid()
+        {
+            (User user, _) = UserBuilder.GenerateUser();
+
+            user.Password = "Teste.Paulo";
+
+            Action action = () => UserValidator.Validate(user);
+
+            action.Should()
+                .Throw<ValidationException>()
+                .WithMessage(VALIDATIONMSG.EXISTING_USER);
+        }
+
+        [Fact]
+        public void Validate_CreateUser_Should_Throw_Exception_When_Password_SpecialCharacters_Invalid()
+        {
+            (User user, _) = UserBuilder.GenerateUser();
+
+            user.Password = "TestePaulo123";
 
             Action action = () => UserValidator.Validate(user);
 
